@@ -1,0 +1,35 @@
+.home{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-nav{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.home-nav-info{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-nav-card{
+  width: 30%;
+  height: auto;
+  cursor: pointer;
+}
+
+.home-nav-image{
+  width: 100%;
+  height: auto;
+}
+
+h4{
+  text-align: center;
+}

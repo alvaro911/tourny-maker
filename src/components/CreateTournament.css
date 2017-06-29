@@ -1,0 +1,22 @@
+.create-tournament{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.make-team{
+  width: 40%;
+}
+
+article{
+  width: 40%;
+  height: auto;
+}
+
+form{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
