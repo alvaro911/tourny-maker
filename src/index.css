@@ -39,6 +39,13 @@ article{
   line-height: 1.5;
 }
 
+form{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
 label{
   margin-top: 5px;
 }

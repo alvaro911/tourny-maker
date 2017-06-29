@@ -1,0 +1,19 @@
+.register-form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.name{
+  width: 70%;
+}
+
+.jersey{
+  width: 20%;
+}
+
+.name, .jersey{
+  display: flex;
+  flex-direction: column;
+}

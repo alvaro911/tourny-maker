@@ -1,0 +1,21 @@
+.search-tournament{
+  width: 100%;
+  height: auto;
+}
+
+.tournament-list{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.tournament-card{
+  width: 22%;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #ebebeb;
+}
