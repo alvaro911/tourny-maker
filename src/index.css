@@ -10,6 +10,10 @@ body {
   box-sizing: border-box;
 }
 
+a{
+  text-decoration: none;
+}
+
 img{
   width: 100%;
   height: auto;
@@ -68,4 +72,33 @@ button{
 
 .Anton{
   font-family: 'Anton';
+}
+
+.fb-btn{
+  width: 100%;
+}
+
+.login{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  height: 90vh;
+}
+
+.login div{
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login form{
+  display: flex;
+  flex-direction: column;
+}
+
+.login p{
+  text-align: center;
 }
