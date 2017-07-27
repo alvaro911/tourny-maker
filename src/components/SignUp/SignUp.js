@@ -5,30 +5,30 @@ import { signUp } from '../../actions/userActions';
 import './SignUp.css';
 
 class SignUp extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      userName:'',
+      userName: '',
       password: '',
       email: '',
       firstName: '',
       lastName: '',
       confirmPassword: '',
-    }
+    };
   }
 
   onSubmit = e => {
     e.preventDefault();
     this.props.dispatch(signUp(this.state));
-  }
+  };
 
   userInfo = e => {
     this.setState({
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
-  render(){
+  render() {
     return (
       <div className="login">
         <div>
@@ -86,8 +86,8 @@ class SignUp extends Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect()(SignUp)
+export default connect()(SignUp);

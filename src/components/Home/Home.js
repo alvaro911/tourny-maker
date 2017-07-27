@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './Home.css';
 
-export default function Home(){
-  return(
+export default function Home() {
+  return (
     <div className="home">
       <div className="home-nav">
         <div className="home-nav-info">
@@ -35,5 +35,5 @@ export default function Home(){
         </div>
       </div>
     </div>
-  )
+  );
 }

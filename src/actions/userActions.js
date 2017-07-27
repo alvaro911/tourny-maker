@@ -1,23 +1,47 @@
 import axios from 'axios';
 
-const authenticate = (data) => ({
+const authenticate = data => ({
   type: 'AUTHENTICATE_USER',
   payload: data,
 });
 
-let res
+const removeToken = data => ({
+  type: 'LOGGING_OUT',
+  payload: data,
+});
 
-export const login = (userInput) => async (dispatch) => {
-  res = await axios.post('/api/v1/users/login', userInput);
-  return dispatch(authenticate(res.data));
+export function checkIfAuth() {
+  return dispatch => {
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        return dispatch(authenticate({ token }));
+      }
+    } catch (e) {}
+  };
 }
 
-export const signUp = (userInput) => async (dispatch) => {
-  res = await axios.post('/api/v1/users/signup', userInput);
+export const login = userInput => async dispatch => {
+  const res = await axios.post(
+    '/api/v1/users/login',
+    userInput,
+  );
+  localStorage.setItem('token', res.data.token);
   return dispatch(authenticate(res.data));
-}
+};
 
-export const update = userInput => async (dispatch) => {
-  res = await axios.patch('/api/v1/users/me/', userInput);
+export const signUp = userInput => async dispatch => {
+  const res = await axios.post(
+    '/api/v1/users/signup',
+    userInput,
+  );
   return dispatch(authenticate(res.data));
-}
+};
+
+export const update = userInput => async dispatch => {
+  const res = await axios.patch(
+    '/api/v1/users/me/',
+    userInput,
+  );
+  return dispatch(authenticate(res.data));
+};
