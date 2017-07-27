@@ -57,7 +57,7 @@ class SignUp extends Component {
               type="text"
               required
             />
-          <label>E-mail</label>
+            <label>E-mail</label>
             <input
               onChange={this.userInfo}
               value={this.state.email}

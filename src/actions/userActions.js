@@ -16,3 +16,8 @@ export const signUp = (userInput) => async (dispatch) => {
   res = await axios.post('/api/v1/users/signup', userInput);
   return dispatch(authenticate(res.data));
 }
+
+export const update = userInput => async (dispatch) => {
+  res = await axios.patch('/api/v1/users/me/', userInput);
+  return dispatch(authenticate(res.data));
+}
