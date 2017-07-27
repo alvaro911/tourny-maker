@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/userActions';
+
+import * as actions from '../../actions';
 
 class Login extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class Login extends Component {
       formSubmitted: true,
     });
     try {
-      await this.props.dispatch(login(this.state));
+      await this.props.loginAction(this.state);
       this.props.history.push('/');
     } catch (e) {
       console.log(e);
@@ -33,7 +34,7 @@ class Login extends Component {
 
   get passwordValidation() {
     if (
-      this.state.password.length < 5 &&
+      this.state.password.length < 6 &&
       this.state.formSubmitted
     ) {
       return true;
@@ -69,4 +70,4 @@ class Login extends Component {
   }
 }
 
-export default connect()(Login);
+export default connect(null, actions)(Login);

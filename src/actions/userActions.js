@@ -5,9 +5,8 @@ const authenticate = data => ({
   payload: data,
 });
 
-const removeToken = data => ({
+const removeToken = () => ({
   type: 'LOGGING_OUT',
-  payload: data,
 });
 
 export function checkIfAuth() {
@@ -21,7 +20,7 @@ export function checkIfAuth() {
   };
 }
 
-export const login = userInput => async dispatch => {
+export const loginAction = userInput => async dispatch => {
   const res = await axios.post(
     '/api/v1/users/login',
     userInput,
@@ -44,4 +43,10 @@ export const update = userInput => async dispatch => {
     userInput,
   );
   return dispatch(authenticate(res.data));
+};
+
+export const logout = () => async dispatch => {
+  console.log('*******************');
+  localStorage.removeItem('token');
+  return dispatch(removeToken());
 };
