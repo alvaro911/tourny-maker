@@ -28,7 +28,7 @@ class Header extends Component {
         {this.props.isLogged
           ? <ul>
               <li>
-                {this.props.user}
+                <Link to="/me">{this.props.user}</Link>
               </li>
               <li onClick={this.userLogout}>Logout</li>
             </ul>

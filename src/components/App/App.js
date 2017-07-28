@@ -12,8 +12,8 @@ import SignUp from '../SignUp/SignUp';
 import CreateTournament from '../CreateTournament/CreateTournament';
 import SearchTournament from '../SearchTournament/SearchTournament';
 import RegisterTeam from '../RegisterTeam/RegisterTeam';
+import UserProfile from '../UserProfile/UserProfile'
 import { checkIfAuth } from '../../actions/userActions';
-import './App.css';
 
 class App extends Component {
   componentWillMount() {
@@ -48,6 +48,7 @@ class App extends Component {
               path="/register-team"
               component={RegisterTeam}
             />
+          <Route exact path="/me" component={UserProfile} />
           </main>
         </div>
       </Router>
