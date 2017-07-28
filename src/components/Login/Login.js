@@ -11,9 +11,11 @@ class Login extends Component {
       email: '',
       formSubmitted: false,
     };
+    this.onSubmit = this.onSubmit.bind(this)
+    this.userInfo = this.userInfo.bind(this)
   }
 
-  onSubmit = async e => {
+  async onSubmit(e){
     e.preventDefault();
     this.setState({
       formSubmitted: true,
@@ -26,7 +28,7 @@ class Login extends Component {
     }
   };
 
-  userInfo = e => {
+  userInfo(e){
     this.setState({
       [e.target.name]: e.target.value,
     });

@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import './Header.css';
 import * as actions from '../../actions';
 
 class Header extends Component {
-  userLogout = async () => {
+  constructor(){
+    super();
+    this.userLogout = this.userLogout.bind(this)
+  }
+  async userLogout() {
     try {
       await this.props.logout();
       this.props.history.push('/');
     } catch (e) {
-      throw(e);
+      throw e;
     }
   };
 
@@ -46,4 +50,4 @@ const mapStateToProps = ({ user }) => ({
   user: user.userName,
 });
 
-export default connect(mapStateToProps, actions)(Header);
+export default withRouter(connect(mapStateToProps, actions)(Header));

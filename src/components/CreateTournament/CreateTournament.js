@@ -17,9 +17,11 @@ class CreateTournament extends Component {
       city: '',
       zipCode: 0,
     };
+    this.onSubmit = this.onSubmit.bind(this)
+    this.tournamentInfo = this.tournamentInfo.bind(this)
   }
 
-  onSubmit = async e => {
+  async onSubmit(e){
     e.preventDefault()
     try {
       await this.props.createTournamentAction(this.state);
@@ -28,7 +30,7 @@ class CreateTournament extends Component {
     }
   }
 
-  tournamentInfo = e => {
+  tournamentInfo(e){
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -63,32 +65,32 @@ class CreateTournament extends Component {
         </article>
         <div className="make-team">
           <form onSubmit={this.onSubmit}>
-          <label htmlFor="tNme">Tournament name</label>
+          <label htmlFor="tournamentName">Tournament name</label>
             <input
               onChange={this.tournamentInfo}
               type="text"
               placeholder="Name of the league"
-              name="tNme"
+              name="tournamentName"
               value={this.state.tournamentName}
               required
             />
-            <label htmlFor="nOfTeams">
+            <label htmlFor="numberOfTeams">
               Number of teams
             </label>
             <input
               onChange={this.tournamentInfo}
               type="text"
-              name="nOfTeams"
+              name="numberOfTeams"
               placeholder="6"
               value={this.state.numberOfTeams}
               required
             />
-            <label htmlFor="minNumPlayers">
+            <label htmlFor="minimumNumPlayers">
               Minimum amount of players per team
             </label>
             <input
               onChange={this.tournamentInfo}
-              name="minNumPlayers"
+              name="minimumNumPlayers"
               type="text"
               placeholder="13"
               value={this.state.minimumNumPlayers}

@@ -15,9 +15,11 @@ class SignUp extends Component {
       lastName: '',
       confirmPassword: '',
     };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.userInfo = this.userInfo.bind(this);
   }
 
-  onSubmit = async e => {
+  async onSubmit(e){
     e.preventDefault();
     try {
       this.props.dispatch(signUp(this.state));
@@ -27,7 +29,7 @@ class SignUp extends Component {
     }
   };
 
-  userInfo = e => {
+  userInfo(e){
     this.setState({
       [e.target.name]: e.target.value,
     });

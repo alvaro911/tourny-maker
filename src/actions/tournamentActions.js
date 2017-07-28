@@ -1,15 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.headers.post[
-  'Authorization'
-] = localStorage.getItem('token');
-axios.defaults.headers.get[
-  'Authorization'
-] = localStorage.getItem('token');
-axios.defaults.headers.patch[
-  'Authorization'
-] = localStorage.getItem('token');
-axios.defaults.headers.delete[
+axios.defaults.headers[
   'Authorization'
 ] = localStorage.getItem('token');
 

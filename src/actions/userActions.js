@@ -13,11 +13,12 @@ const removeToken = () => ({
 });
 
 export function checkIfAuth() {
-  return dispatch => {
+  return  dispatch => {
     try {
-      const token = localStorage.getItem('token');
-      if (token) {
-        return dispatch(authenticate({ token }));
+      const token =  localStorage.getItem('token');
+      const userName =  localStorage.getItem('userName')
+      if (token && userName) {
+        return dispatch(authenticate({ token, userName }));
       }
     } catch (e) {
       throw(e)
@@ -31,6 +32,7 @@ export const loginAction = userInput => async dispatch => {
     userInput,
   );
   localStorage.setItem('token', res.data.token);
+  localStorage.setItem('userName', res.data.userName)
   return dispatch(authenticate(res.data));
 };
 
