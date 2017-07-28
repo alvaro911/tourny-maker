@@ -21,8 +21,8 @@ class Login extends Component {
     try {
       await this.props.loginAction(this.state);
       this.props.history.push('/');
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      throw(err);
     }
   };
 
@@ -47,14 +47,14 @@ class Login extends Component {
       <div className="login">
         <div>
           <form onSubmit={this.onSubmit}>
-            <label>E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input
               type="email"
               name="email"
               onChange={this.userInfo}
               value={this.state.email}
             />
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"

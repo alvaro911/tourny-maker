@@ -14,12 +14,7 @@ export default (state = initialState, action) => {
         userName: action.payload.userName,
       };
     case 'LOGGING_OUT':
-      return {
-        ...state,
-        token: '',
-        isLogged: false,
-        userName: '',
-      };
+      return initialState;
     default:
       return state;
   }

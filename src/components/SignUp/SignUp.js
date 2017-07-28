@@ -17,9 +17,14 @@ class SignUp extends Component {
     };
   }
 
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
-    this.props.dispatch(signUp(this.state));
+    try {
+      this.props.dispatch(signUp(this.state));
+      this.props.history.push('/');
+    } catch (err) {
+      throw(err);
+    }
   };
 
   userInfo = e => {
@@ -33,7 +38,7 @@ class SignUp extends Component {
       <div className="login">
         <div>
           <form onSubmit={this.onSubmit}>
-            <label>Name</label>
+            <label htmlFor="firstName">Name</label>
             <input
               onChange={this.userInfo}
               value={this.state.firstName}
@@ -41,7 +46,7 @@ class SignUp extends Component {
               type="text"
               required
             />
-            <label>Last name</label>
+            <label htmlFor="lastName">Last name</label>
             <input
               onChange={this.userInfo}
               value={this.state.lastName}
@@ -49,7 +54,7 @@ class SignUp extends Component {
               type="text"
               required
             />
-            <label>Username</label>
+            <label htmlFor="userName">Username</label>
             <input
               onChange={this.userInfo}
               value={this.state.userName}
@@ -57,7 +62,7 @@ class SignUp extends Component {
               type="text"
               required
             />
-            <label>E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input
               onChange={this.userInfo}
               value={this.state.email}
@@ -65,7 +70,7 @@ class SignUp extends Component {
               type="email"
               required
             />
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
               onChange={this.userInfo}
               value={this.state.password}
@@ -73,7 +78,9 @@ class SignUp extends Component {
               type="password"
               required
             />
-            <label>Confirm password</label>
+            <label htmlFor="confirmPassword">
+              Confirm password
+            </label>
             <input
               onChange={this.userInfo}
               value={this.state.confirmPassword}

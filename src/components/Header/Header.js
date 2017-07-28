@@ -11,7 +11,7 @@ class Header extends Component {
       await this.props.logout();
       this.props.history.push('/');
     } catch (e) {
-      console.log(e);
+      throw(e);
     }
   };
 
@@ -41,11 +41,9 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => {
-  return {
-    isLogged: user.isLogged,
-    user: user.userName,
-  };
-};
+const mapStateToProps = ({ user }) => ({
+  isLogged: user.isLogged,
+  user: user.userName,
+});
 
 export default connect(mapStateToProps, actions)(Header);

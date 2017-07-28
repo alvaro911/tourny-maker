@@ -1,12 +1,15 @@
 import axios from 'axios';
 
+const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
+const LOGGING_OUT = 'LOGGING_OUT';
+
 const authenticate = data => ({
-  type: 'AUTHENTICATE_USER',
+  type: AUTHENTICATE_USER,
   payload: data,
 });
 
 const removeToken = () => ({
-  type: 'LOGGING_OUT',
+  type: LOGGING_OUT,
 });
 
 export function checkIfAuth() {
@@ -16,7 +19,9 @@ export function checkIfAuth() {
       if (token) {
         return dispatch(authenticate({ token }));
       }
-    } catch (e) {}
+    } catch (e) {
+      throw(e)
+    }
   };
 }
 
@@ -46,7 +51,6 @@ export const update = userInput => async dispatch => {
 };
 
 export const logout = () => async dispatch => {
-  console.log('*******************');
   localStorage.removeItem('token');
   return dispatch(removeToken());
 };
