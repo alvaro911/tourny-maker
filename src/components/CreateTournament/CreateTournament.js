@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 import './CreateTournament.css';
 
 class CreateTournament extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       tournamentName: '',
@@ -17,23 +17,23 @@ class CreateTournament extends Component {
       city: '',
       zipCode: 0,
     };
-    this.onSubmit = this.onSubmit.bind(this)
-    this.tournamentInfo = this.tournamentInfo.bind(this)
+    this.onSubmit = this.onSubmit.bind(this);
+    this.tournamentInfo = this.tournamentInfo.bind(this);
   }
 
-  async onSubmit(e){
-    e.preventDefault()
+  async onSubmit(e) {
+    e.preventDefault();
     try {
       await this.props.createTournamentAction(this.state);
     } catch (err) {
-      throw(err);
+      throw err;
     }
   }
 
-  tournamentInfo(e){
+  tournamentInfo(e) {
     this.setState({
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   }
 
   render() {
@@ -65,7 +65,9 @@ class CreateTournament extends Component {
         </article>
         <div className="make-team">
           <form onSubmit={this.onSubmit}>
-          <label htmlFor="tournamentName">Tournament name</label>
+            <label htmlFor="tournamentName">
+              Tournament name
+            </label>
             <input
               onChange={this.tournamentInfo}
               type="text"
@@ -143,7 +145,7 @@ class CreateTournament extends Component {
               required
             />
 
-          <button type="submit">Submit</button>
+            <button type="submit">Submit</button>
           </form>
         </div>
       </div>

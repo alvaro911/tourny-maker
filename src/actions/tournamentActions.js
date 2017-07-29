@@ -39,5 +39,10 @@ export const createTournamentAction = args => async dispatch => {
     '/api/v1/tournaments/createTournament',
     args,
   );
-  return dispatch(create(res.data))
+  return dispatch(create(res.data));
+};
+
+export const getTournamentsActions = () => async dispatch => {
+  const res = await axios.get('/api/v1/tournaments/');
+  return dispatch(get(res.data));
 };

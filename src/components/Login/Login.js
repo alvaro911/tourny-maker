@@ -11,11 +11,11 @@ class Login extends Component {
       email: '',
       formSubmitted: false,
     };
-    this.onSubmit = this.onSubmit.bind(this)
-    this.userInfo = this.userInfo.bind(this)
+    this.onSubmit = this.onSubmit.bind(this);
+    this.userInfo = this.userInfo.bind(this);
   }
 
-  async onSubmit(e){
+  async onSubmit(e) {
     e.preventDefault();
     this.setState({
       formSubmitted: true,
@@ -24,15 +24,15 @@ class Login extends Component {
       await this.props.loginAction(this.state);
       this.props.history.push('/');
     } catch (err) {
-      throw(err);
+      throw err;
     }
-  };
+  }
 
-  userInfo(e){
+  userInfo(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
-  };
+  }
 
   get passwordValidation() {
     if (

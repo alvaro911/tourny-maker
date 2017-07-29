@@ -6,9 +6,9 @@ import './Header.css';
 import * as actions from '../../actions';
 
 class Header extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.userLogout = this.userLogout.bind(this)
+    this.userLogout = this.userLogout.bind(this);
   }
   async userLogout() {
     try {
@@ -17,7 +17,7 @@ class Header extends Component {
     } catch (e) {
       throw e;
     }
-  };
+  }
 
   render() {
     return (
@@ -28,7 +28,9 @@ class Header extends Component {
         {this.props.isLogged
           ? <ul>
               <li>
-                <Link to="/me">{this.props.user}</Link>
+                <Link to="/me">
+                  {this.props.user}
+                </Link>
               </li>
               <li onClick={this.userLogout}>Logout</li>
             </ul>
@@ -50,4 +52,6 @@ const mapStateToProps = ({ user }) => ({
   user: user.userName,
 });
 
-export default withRouter(connect(mapStateToProps, actions)(Header));
+export default withRouter(
+  connect(mapStateToProps, actions)(Header),
+);

@@ -19,21 +19,21 @@ class SignUp extends Component {
     this.userInfo = this.userInfo.bind(this);
   }
 
-  async onSubmit(e){
+  async onSubmit(e) {
     e.preventDefault();
     try {
       this.props.dispatch(signUp(this.state));
       this.props.history.push('/');
     } catch (err) {
-      throw(err);
+      throw err;
     }
-  };
+  }
 
-  userInfo(e){
+  userInfo(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
-  };
+  }
 
   render() {
     return (
