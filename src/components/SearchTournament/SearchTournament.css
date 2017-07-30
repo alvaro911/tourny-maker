@@ -19,3 +19,10 @@
   margin-bottom: 15px;
   background-color: #ebebeb;
 }
+
+.team-reg-btn{
+  border: 0;
+  background-color: rgb(130, 130, 130);
+  width: 100%;
+  margin: 0 0 10px;
+}

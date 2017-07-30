@@ -24,29 +24,17 @@ class RegisterTeam extends Component {
           fermentum nibh, id tempus magna gravida a.
         </article>
         <form className="register-form">
-          <div className="name">
-            <label>Name</label>
-            <input type="text" />
-          </div>
-          <div className="jersey">
-            <label>No.</label>
-            <input type="text" />
+          <div className="teamName">
+            <label htmlFor="teamName">Team Name</label>
+            <input name="teamName" type="text" />
           </div>
           <div className="name">
-            <label>Name</label>
-            <input type="text" />
+            <label htmlFor="playerName">Name</label>
+            <input name="playerName" type="text" />
           </div>
           <div className="jersey">
-            <label>No.</label>
-            <input type="text" />
-          </div>
-          <div className="name">
-            <label>Name</label>
-            <input type="text" />
-          </div>
-          <div className="jersey">
-            <label>No.</label>
-            <input type="text" />
+            <label htmlFor="playerNumber">No.</label>
+            <input name="playerNumber" type="text" />
           </div>
 
           <button>Register Team</button>

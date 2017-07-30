@@ -12,22 +12,28 @@ const removeToken = () => ({
   type: LOGGING_OUT,
 });
 
+const deleteUser = () => ({
+  type: 'DELETE_USER',
+})
+
 export function checkIfAuth() {
   return dispatch => {
     try {
       const token = localStorage.getItem('token');
       const userName = localStorage.getItem('userName');
-      const name = localStorage.getItem('name');
+      const firstName = localStorage.getItem('firstName');
       const lastName = localStorage.getItem('lastName');
       const email = localStorage.getItem('email');
+      const _id = localStorage.getItem('_id')
       if (token && userName) {
         return dispatch(
           authenticate({
             token,
             userName,
-            name,
+            firstName,
             lastName,
             email,
+            _id
           }),
         );
       }
@@ -44,10 +50,10 @@ export const loginAction = userInput => async dispatch => {
   );
   localStorage.setItem('token', res.data.token);
   localStorage.setItem('userName', res.data.userName);
-  localStorage.setItem('name', res.data.name);
+  localStorage.setItem('firstName', res.data.firstName);
   localStorage.setItem('lastName', res.data.lastName);
   localStorage.setItem('email', res.data.email);
-  console.log(res.data);
+  localStorage.setItem('_id', res.data._id)
   return dispatch(authenticate(res.data));
 };
 
@@ -58,25 +64,43 @@ export const signUp = userInput => async dispatch => {
   );
   localStorage.setItem('token', res.data.token);
   localStorage.setItem('userName', res.data.userName);
-  localStorage.setItem('name', res.data.name);
+  localStorage.setItem('firstName', res.data.firstName);
   localStorage.setItem('lastName', res.data.lastName);
   localStorage.setItem('email', res.data.email);
+  localStorage.setItem('_id', res.data._id)
   return dispatch(authenticate(res.data));
 };
 
-export const update = userInput => async dispatch => {
+export const updateAction = (id, userInput) => async dispatch => {
   const res = await axios.patch(
-    '/api/v1/users/me/',
+    `/api/v1/users/me/${id}`,
     userInput,
   );
+  console.log('userActions res', res);
+  localStorage.setItem('userName', res.data.userName);
+  localStorage.setItem('firstName', res.data.firstName);
+  localStorage.setItem('lastName', res.data.lastName);
   return dispatch(authenticate(res.data));
 };
 
 export const logout = () => async dispatch => {
+  console.log('userActions logout');
   localStorage.removeItem('token');
   localStorage.removeItem('userName');
-  localStorage.removeItem('name');
+  localStorage.removeItem('firstName');
   localStorage.removeItem('lastName');
   localStorage.removeItem('email');
+  localStorage.removeItem('_id');
   return dispatch(removeToken());
 };
+
+export const deleteAction = (id) => async dispatch => {
+  await axios.delete(`/api/v1/users/me/${id}`)
+  localStorage.removeItem('token');
+  localStorage.removeItem('userName');
+  localStorage.removeItem('firstName');
+  localStorage.removeItem('lastName');
+  localStorage.removeItem('email');
+  localStorage.removeItem('_id');
+  return dispatch(deleteUser())
+}

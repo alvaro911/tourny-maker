@@ -1,19 +1,34 @@
+.register-team{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+article{
+  width: 40%;
+}
+
 .register-form{
+  width: 40%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
+.teamName{
+  width: 100%;
+}
+
 .name{
-  width: 70%;
+  width: 75%;
 }
 
 .jersey{
   width: 20%;
 }
 
-.name, .jersey{
+.name, .jersey, .teamName{
   display: flex;
   flex-direction: column;
 }

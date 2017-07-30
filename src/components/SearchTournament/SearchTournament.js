@@ -12,23 +12,30 @@ class SearchTournament extends Component {
     this.props.getTournamentsActions();
   }
 
+  toRegTeam(id) {
+    this.props.history.push(`/register-team/${id}`)
+  }
+
   render() {
     const tournamentArr = this.props.tournament.map(item =>
-      (<div key={item.id} className="tournament-card">
-        <h3>
-          {item.tournamentName}
-        </h3>
-        <p>Teams in the league</p>
-        <p>
-          4/{item.numberOfTeams}
-        </p>
-        <p>
-          City: {item.city}
-        </p>
-        <h5>
-          Created by: {item.user.userName}
-        </h5>
-      </div>),
+      (
+        <div key={item.id} className="tournament-card">
+          <h3>
+            {item.tournamentName}
+          </h3>
+          <p>Teams in the league</p>
+          <p>
+            4/{item.numberOfTeams}
+          </p>
+          <p>
+            City: {item.city}
+          </p>
+          <h5>
+            Created by: {item.user.userName}
+          </h5>
+          <button className="team-reg-btn" onClick={this.toRegTeam.bind(this, item.id)}>Register Team</button>
+        </div>
+      ),
     );
     if (!this.props.tournament) {
       return (
