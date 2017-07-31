@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import * as actions from '../../actions';
 import './CreateTournament.css';
@@ -25,6 +26,7 @@ class CreateTournament extends Component {
     e.preventDefault();
     try {
       await this.props.createTournamentAction(this.state);
+      this.props.history.push('/')
     } catch (err) {
       throw err;
     }
@@ -153,4 +155,4 @@ class CreateTournament extends Component {
   }
 }
 
-export default connect(null, actions)(CreateTournament);
+export default withRouter(connect(null, actions)(CreateTournament));

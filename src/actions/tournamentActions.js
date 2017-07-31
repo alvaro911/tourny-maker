@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-axios.defaults.headers[
-  'Authorization'
-] = localStorage.getItem('token');
+axios.interceptors.request.use(config => {
+  const token = localStorage.getItem('token');
+  config.headers.Authorization = token || null;
+  return config;
+});
 
 const CREATE_TOURNAMENT = 'CREATE_TOURNAMENT';
 const UPDATE_TOURNAMENT = 'UPDATE_TOURNAMENT';
@@ -35,11 +37,16 @@ const deleteAll = () => ({
 });
 
 export const createTournamentAction = args => async dispatch => {
-  const res = await axios.post(
-    '/api/v1/tournaments/createTournament',
-    args,
-  );
-  return dispatch(create(res.data));
+  try {
+    const res = await axios.post(
+      '/api/v1/tournaments/createTournament',
+      args,
+    );
+    console.log(res);
+    return dispatch(create(res.data));
+  } catch (e) {
+    console.log({e});
+  }
 };
 
 export const getTournamentsActions = () => async dispatch => {
