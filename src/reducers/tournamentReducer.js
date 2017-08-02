@@ -75,6 +75,8 @@ export default (state = initialState.tournaments, action) => {
         city: action.payload.city,
         zipCode: action.payload.zipCode,
       }
+    case 'DELETE_TOURNAMENT':
+      return initialState;
     default:
       return state;
   }

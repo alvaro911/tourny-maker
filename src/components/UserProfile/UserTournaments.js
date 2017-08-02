@@ -7,8 +7,22 @@ import * as actions from '../../actions'
 import './user.css'
 
 class UserTournaments extends Component {
+  constructor(){
+    super()
+
+    this.deleteTourny = this.deleteTourny.bind(this)
+  }
+
   componentWillMount(){
     this.props.getTournamentsByUserId(this.props.id);
+  }
+
+  async deleteTourny(id){
+    try {
+      await this.props.deleteTournamentAction(id)
+    } catch (e) {
+      throw e;
+    }
   }
 
   render(){
@@ -22,7 +36,7 @@ class UserTournaments extends Component {
         </div>
         <div className="tourny-actions">
           <button>update</button>
-          <button>delete</button>
+          <button onClick={this.props.deleteTourny.bind(this, item.id)}>delete</button>
         </div>
       </div>
     ))

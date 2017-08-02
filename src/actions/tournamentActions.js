@@ -10,8 +10,7 @@ const CREATE_TOURNAMENT = 'CREATE_TOURNAMENT';
 const UPDATE_TOURNAMENT = 'UPDATE_TOURNAMENT';
 const DELETE_TOURNAMENT = 'DELETE_TOURNAMENT';
 const FETCH_TOURNAMENTS = 'FETCH_TOURNAMENTS';
-const FETCH_TOURNAMENT = 'FETCH_TOURNAMENT'
-const DELETE_ALL_TOURNAMENTS = 'DELETE_ALL_TOURNAMENTS';
+const FETCH_TOURNAMENT = 'FETCH_TOURNAMENT';
 const FETCH_TOURNAMENTS_BY_USER_ID = 'FETCH_TOURNAMENTS_BY_USER_ID'
 
 const create = data => ({
@@ -39,14 +38,9 @@ const getById = data => ({
   payload: data,
 })
 
-// const delete = id => ({
-//   type: DELETE_TOURNAMENT,
-//   id
-// })
-
-const deleteAll = () => ({
-  type: DELETE_ALL_TOURNAMENTS,
-});
+const delete = () => ({
+  type: DELETE_TOURNAMENT,
+})
 
 export const createTournamentAction = args => async dispatch => {
   try {
@@ -79,6 +73,15 @@ export const getTournamentById = id => async dispatch => {
   try {
     const res = await axios.get(`/api/v1/tournaments/${id}`)
     return dispatch(getById(res.data))
+  } catch (e) {
+    console.log({e});
+  }
+}
+
+export const deleteTournamentAction = id => async dispatch => {
+  try {
+    await axios.delete(`/api/v1/tournaments/${id}`)
+    return dispatch(delete())
   } catch (e) {
     console.log({e});
   }
