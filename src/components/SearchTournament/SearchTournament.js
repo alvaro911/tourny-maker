@@ -17,7 +17,7 @@ class SearchTournament extends Component {
   }
 
   render() {
-    const tournamentArr = this.props.tournament.map(item =>
+    const tournamentArr = this.props.tData.map(item =>
       (
         <div key={item.id} className="tournament-card">
           <h3>
@@ -25,11 +25,15 @@ class SearchTournament extends Component {
           </h3>
           <p>Teams in the league</p>
           <p>
+            {
+              // TODO: I need to get the length of the array of teams
+            }
             4/{item.numberOfTeams}
           </p>
           <p>
             City: {item.city}
           </p>
+          <h5>Start Date: {item.startDate}</h5>
           <h5>
             Created by: {item.user.userName}
           </h5>
@@ -37,7 +41,7 @@ class SearchTournament extends Component {
         </div>
       ),
     );
-    if (!this.props.tournament) {
+    if (!this.props.tData) {
       return (
         <div>
           <h2>Loading...</h2>
@@ -53,25 +57,22 @@ class SearchTournament extends Component {
         <h2 className="Anton">Search for a league</h2>
         <p>
           Ready to show the world what you and your friends
-          are made of? Look at all the tournaments in your
-          area and pick the one you would like to
+          are made of? Pick the tournament you would like to
           participate in. Pay attenttion when we the
-          tournament starts. Are you looking for a
-          tournament in particular? Use the search bar to
-          find the one you are looking for, you can look for
-          Tournament Name or by tournament creator name
+          tournament starts.
         </p>
-
-        <form className="tournament-form">
-          <label htmlFor="state">State</label>
-          <input name="state" className="location" type="text" />
-          <label htmlFor="city">City</label>
-          <input name="city" className="location" type="text" />
-          <label htmlFor="zipCode">Zip code</label>
-          <input name="zipCode" className="location" type="text" />
-
-          <button type="submit">Search</button>
-        </form>
+        {
+          // <form className="tournament-form">
+          //   <label htmlFor="state">State</label>
+          //   <input name="state" className="location" type="text" />
+          //   <label htmlFor="city">City</label>
+          //   <input name="city" className="location" type="text" />
+          //   <label htmlFor="zipCode">Zip code</label>
+          //   <input name="zipCode" className="location" type="text" />
+          //
+          //   <button type="submit">Search</button>
+          // </form>
+        }
         <div className="tournament-list">
           {tournamentArr}
         </div>
@@ -80,13 +81,17 @@ class SearchTournament extends Component {
   }
 }
 SearchTournament.defaultProps = {
-  tournament: [],
+  tData: [],
 };
 SearchTournament.propTypes = {
-  tournament: PropTypes.array.isRequired,
+  tData: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = ({ tournament }) => tournament;
+const mapStateToProps = ({tournament}) => (
+  {
+    tData: tournament.data
+  }
+)
 
 export default withRouter(
   connect(mapStateToProps, actions)(SearchTournament),

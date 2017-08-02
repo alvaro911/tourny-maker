@@ -6,3 +6,33 @@
 .update-fields{
   display: flex;
 }
+
+.tourny{
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 3em 2em;
+  align-content: center;
+}
+
+.tourny:nth-child(even){
+  background-color: rgb(230, 230, 230)
+}
+
+.tourny-number{
+  width: 10%
+}
+
+.tourny-name{
+  width: 70%
+}
+
+.tourny-actions{
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tourny-actions button{
+  width: 40%
+}

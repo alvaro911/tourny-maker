@@ -23,7 +23,8 @@ class UserProfile extends Component {
             <b>E-mail</b> {this.props.email}
           </h3>
         </div>
-        <Link to="/me/update">Settings</Link>
+        <Link to="/me/update">Update profile</Link>
+        <Link to="/me/tournaments">My Tournaments</Link>
       </div>
     );
   }

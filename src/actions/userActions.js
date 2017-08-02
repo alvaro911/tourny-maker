@@ -76,7 +76,6 @@ export const updateAction = (id, userInput) => async dispatch => {
     `/api/v1/users/me/${id}`,
     userInput,
   );
-  console.log('userActions res', res);
   localStorage.setItem('userName', res.data.userName);
   localStorage.setItem('firstName', res.data.firstName);
   localStorage.setItem('lastName', res.data.lastName);
@@ -84,7 +83,6 @@ export const updateAction = (id, userInput) => async dispatch => {
 };
 
 export const logout = () => async dispatch => {
-  console.log('userActions logout');
   localStorage.removeItem('token');
   localStorage.removeItem('userName');
   localStorage.removeItem('firstName');
