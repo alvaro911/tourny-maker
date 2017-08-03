@@ -13,8 +13,8 @@ import CreateTournament from '../CreateTournament/CreateTournament';
 import SearchTournament from '../SearchTournament/SearchTournament';
 import RegisterTeam from '../RegisterTeam/RegisterTeam';
 import UserProfile from '../UserProfile/UserProfile';
-import UserUpdate from '../UserProfile/UserUpdate'
-import UserTournaments from '../UserProfile/UserTournaments'
+import UserUpdate from '../UserProfile/UserUpdate';
+import UserTournaments from '../UserProfile/UserTournaments';
 import { checkIfAuth } from '../../actions/userActions';
 
 class App extends Component {
@@ -55,8 +55,16 @@ class App extends Component {
               path="/me"
               component={UserProfile}
             />
-          <Route exact path="/me/update" component={UserUpdate}/>
-          <Route exact path="/me/tournaments" component={UserTournaments}/>
+            <Route
+              exact
+              path="/me/update"
+              component={UserUpdate}
+            />
+            <Route
+              exact
+              path="/me/tournaments"
+              component={UserTournaments}
+            />
           </main>
         </div>
       </Router>

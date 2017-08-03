@@ -26,7 +26,7 @@ class CreateTournament extends Component {
     e.preventDefault();
     try {
       await this.props.createTournamentAction(this.state);
-      this.props.history.push('/')
+      this.props.history.push('/');
     } catch (err) {
       throw err;
     }
@@ -155,4 +155,6 @@ class CreateTournament extends Component {
   }
 }
 
-export default withRouter(connect(null, actions)(CreateTournament));
+export default withRouter(
+  connect(null, actions)(CreateTournament),
+);

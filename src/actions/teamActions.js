@@ -1,15 +1,24 @@
 import axios from 'axios';
 
-axios.defaults.headers[
-  'Authorization'
-] = localStorage.getItem('token');
-
-const createTeam = data => ({
-  type: 'CREATE_TEAM',
-  payload: data,
+axios.interceptors.request.use(config => {
+  const token = localStorage.getItem('token');
+  config.headers.Authorization = token || null;
+  return config;
 });
 
-export const createTeamAction = userInput => async dispatch => {
-  const res = await axios.post('/createTeam', userInput);
-  return dispatch(createTeam(res.data));
+const createTeam = (data, tournamentId) => ({
+  type: 'CREATE_TEAM',
+  payload: data,
+  tournamentId,
+});
+
+export const createTeamAction = (
+  userInput,
+  tournamentId,
+) => async dispatch => {
+  const res = await axios.post('/createTeam', {
+    ...userInput,
+    tournament: tournamentId,
+  });
+  return dispatch(createTeam(res.data, tournamentId));
 };

@@ -1,56 +1,56 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
-import * as actions from '../../actions'
-import './user.css'
+import * as actions from '../../actions';
+import './user.css';
 
 class UserTournaments extends Component {
-  constructor(){
-    super()
-
-    this.deleteTourny = this.deleteTourny.bind(this)
-  }
-
-  componentWillMount(){
+  componentWillMount() {
     this.props.getTournamentsByUserId(this.props.id);
   }
 
-  async deleteTourny(id){
-    try {
-      await this.props.deleteTournamentAction(id)
-    } catch (e) {
-      throw e;
-    }
+  deleteTourny(id) {
+    this.props.deleteTournamentAction(id);
   }
 
-  render(){
-    const tournaments = this.props.userTournyArr.map((item, i) => (
-      <div className="tourny" key={item.id}>
-        <div className="tourny-number">
-          <h2>{i + 1}</h2>
-        </div>
-        <div className="tourny-name">
-          <h2>{item.tournamentName}</h2>
-        </div>
-        <div className="tourny-actions">
-          <button>update</button>
-          <button onClick={this.props.deleteTourny.bind(this, item.id)}>delete</button>
-        </div>
-      </div>
-    ))
+  render() {
+    const tournaments = this.props.userTournyArr.map(
+      (item, i) =>
+        <div className="tourny" key={item._id}>
+          <div className="tourny-number">
+            <h2>
+              {i + 1}
+            </h2>
+          </div>
+          <div className="tourny-name">
+            <h2>
+              {item.tournamentName}
+            </h2>
+          </div>
+          <div className="tourny-actions">
+            <button>update</button>
+            <button
+              onClick={this.deleteTourny.bind(
+                this,
+                item._id,
+              )}
+            >
+              delete
+            </button>
+          </div>
+        </div>,
+    );
 
-    if(!this.props.userTournyArr) {
-      return(
-        <h1>Loading...</h1>
-      )
+    if (!this.props.userTournyArr) {
+      return <h1>Loading...</h1>;
     }
-    return(
+    return (
       <div>
         {tournaments}
       </div>
-    )
+    );
   }
 }
 
@@ -61,11 +61,11 @@ UserTournaments.propTypes = {
   userTournyArr: PropTypes.array,
 };
 
-const mapStateToProps = ({user, tournament}) => (
-  {
-    userTournyArr: tournament.userTournaments,
-    id: user._id
-  }
-)
+const mapStateToProps = ({ user, tournament }) => ({
+  userTournyArr: tournament.userTournaments,
+  id: user._id,
+});
 
-export default connect(mapStateToProps, actions)(UserTournaments)
+export default connect(mapStateToProps, actions)(
+  UserTournaments,
+);

@@ -14,7 +14,7 @@ const removeToken = () => ({
 
 const deleteUser = () => ({
   type: 'DELETE_USER',
-})
+});
 
 export function checkIfAuth() {
   return dispatch => {
@@ -24,7 +24,7 @@ export function checkIfAuth() {
       const firstName = localStorage.getItem('firstName');
       const lastName = localStorage.getItem('lastName');
       const email = localStorage.getItem('email');
-      const _id = localStorage.getItem('_id')
+      const _id = localStorage.getItem('_id');
       if (token && userName) {
         return dispatch(
           authenticate({
@@ -33,7 +33,7 @@ export function checkIfAuth() {
             firstName,
             lastName,
             email,
-            _id
+            _id,
           }),
         );
       }
@@ -53,7 +53,7 @@ export const loginAction = userInput => async dispatch => {
   localStorage.setItem('firstName', res.data.firstName);
   localStorage.setItem('lastName', res.data.lastName);
   localStorage.setItem('email', res.data.email);
-  localStorage.setItem('_id', res.data._id)
+  localStorage.setItem('_id', res.data._id);
   return dispatch(authenticate(res.data));
 };
 
@@ -67,11 +67,14 @@ export const signUp = userInput => async dispatch => {
   localStorage.setItem('firstName', res.data.firstName);
   localStorage.setItem('lastName', res.data.lastName);
   localStorage.setItem('email', res.data.email);
-  localStorage.setItem('_id', res.data._id)
+  localStorage.setItem('_id', res.data._id);
   return dispatch(authenticate(res.data));
 };
 
-export const updateAction = (id, userInput) => async dispatch => {
+export const updateAction = (
+  id,
+  userInput,
+) => async dispatch => {
   const res = await axios.patch(
     `/api/v1/users/me/${id}`,
     userInput,
@@ -92,13 +95,13 @@ export const logout = () => async dispatch => {
   return dispatch(removeToken());
 };
 
-export const deleteAction = (id) => async dispatch => {
-  await axios.delete(`/api/v1/users/me/${id}`)
+export const deleteAction = id => async dispatch => {
+  await axios.delete(`/api/v1/users/me/${id}`);
   localStorage.removeItem('token');
   localStorage.removeItem('userName');
   localStorage.removeItem('firstName');
   localStorage.removeItem('lastName');
   localStorage.removeItem('email');
   localStorage.removeItem('_id');
-  return dispatch(deleteUser())
-}
+  return dispatch(deleteUser());
+};

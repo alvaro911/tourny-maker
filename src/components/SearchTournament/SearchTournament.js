@@ -13,33 +13,35 @@ class SearchTournament extends Component {
   }
 
   toRegTeam(id) {
-    this.props.history.push(`/register-team/${id}`)
+    this.props.history.push(`/register-team/${id}`);
   }
 
   render() {
     const tournamentArr = this.props.tData.map(item =>
-      (
-        <div key={item.id} className="tournament-card">
-          <h3>
-            {item.tournamentName}
-          </h3>
-          <p>Teams in the league</p>
-          <p>
-            {
-              // TODO: I need to get the length of the array of teams
-            }
-            4/{item.numberOfTeams}
-          </p>
-          <p>
-            City: {item.city}
-          </p>
-          <h5>Start Date: {item.startDate}</h5>
-          <h5>
-            Created by: {item.user.userName}
-          </h5>
-          <button className="team-reg-btn" onClick={this.toRegTeam.bind(this, item.id)}>Register Team</button>
-        </div>
-      ),
+      <div key={item._id} className="tournament-card">
+        <h3>
+          {item.tournamentName}
+        </h3>
+        <p>Teams in the league</p>
+        <p>
+          {item.teams.length}/{item.numberOfTeams}
+        </p>
+        <p>
+          City: {item.city}
+        </p>
+        <h5>
+          Start Date: {item.startDate}
+        </h5>
+        <h5>
+          Created by: {item.user.userName}
+        </h5>
+        <button
+          className="team-reg-btn"
+          onClick={this.toRegTeam.bind(this, item._id)}
+        >
+          Register Team
+        </button>
+      </div>,
     );
     if (!this.props.tData) {
       return (
@@ -87,11 +89,9 @@ SearchTournament.propTypes = {
   tData: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = ({tournament}) => (
-  {
-    tData: tournament.data
-  }
-)
+const mapStateToProps = ({ tournament }) => ({
+  tData: tournament.tournaments,
+});
 
 export default withRouter(
   connect(mapStateToProps, actions)(SearchTournament),

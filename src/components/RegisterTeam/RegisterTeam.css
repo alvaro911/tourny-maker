@@ -20,8 +20,14 @@ article{
   width: 100%;
 }
 
+.player-field-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .name{
-  width: 75%;
+  width: 70%;
 }
 
 .jersey{
