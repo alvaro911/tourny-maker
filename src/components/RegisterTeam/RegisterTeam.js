@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import * as actions from '../../actions';
 
 import './RegisterTeam.css';
 
 class RegisterTeam extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       teamName: '',
-      playerName: '',
-      playerNumber: 0,
+      players: {},
     };
   }
+
   componentWillMount() {
     this.props.getTournamentById(
       this.props.match.params.id,
@@ -23,55 +24,64 @@ class RegisterTeam extends Component {
     e.preventDefault();
     const tournamentId = this.props.match.params.id;
     try {
-      console.log(this.state);
-      // awathis.props.createTeamAction()
+      await this.props.createTeamAction({
+        teamName: this.state.teamName,
+        players: Object.values(this.state.players)
+      }, tournamentId)
+      this.props.history.push('/')
     } catch (err) {
       throw e;
     }
   }
 
-  teamInfo(e) {
+  teamInfo(e, i) {
     this.setState({
-      [e.target.name]: e.target.value,
+      players: {
+        ...this.state.players,
+        [i]: {
+          ...this.state.players[i],
+          [e.target.name]: e.target.value
+        }
+      }
     });
   }
 
+  teamNameInfo(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
-    const stuff = [];
-    if (!this.props.t) {
-      return <h1>Loading...</h1>;
-    } else {
-      for (
-        let i = 0;
-        i < this.props.t.minimumNumPlayers;
-        i++
-      ) {
-        stuff.push(i);
-      }
+    if(!this.props.t){
+      return <h1>loading...</h1>
     }
-    const fields = stuff.map((field, i) =>
-      <div key={i} className="player-field-container">
+
+    const fields = Array.from({length: this.props.t.minimumNumPlayers}).map((field, i) =>
+      (<div key={i} className="player-field-container">
         <div className="name">
           <label htmlFor="playerName">Name</label>
           <input
+            id={`playerName-${i}`}
             name="playerName"
             type="text"
             placeholder="Name"
-            value={this.state.playerName}
-            onChange={this.teamInfo}
+            value={this.state.players[i] != null ? this.state.players[i].playerName : ''}
+            onChange={e => this.teamInfo(e, i)}
           />
         </div>
         <div className="jersey">
           <label htmlFor="playerNumber">No.</label>
           <input
+            id={`playerNumber-${i}`}
             name="playerNumber"
             type="text"
             placeholder="10"
-            value={this.state.playerNumber}
-            onChange={this.teamInfo}
+            value={this.state.players[i] != null ? this.state.players[i].playerNumber : ''}
+            onChange={e => this.teamInfo(e, i)}
           />
         </div>
-      </div>,
+      </div>)
     );
     return (
       <div className="register-team">
@@ -90,7 +100,7 @@ class RegisterTeam extends Component {
         </article>
         <form
           className="register-form"
-          onSubmit={this.submitForm}
+          onSubmit={e => this.submitForm(e)}
         >
           <h1>
             {this.props.t.tournamentName}
@@ -101,7 +111,7 @@ class RegisterTeam extends Component {
               name="teamName"
               type="text"
               value={this.state.teamName}
-              onChange={this.teamInfo}
+              onChange={e => this.teamNameInfo(e)}
             />
           </div>
           {fields}
@@ -116,6 +126,6 @@ const mapStateToProps = ({ tournament }) => ({
   t: tournament.tournaments[0],
 });
 
-export default connect(mapStateToProps, actions)(
+export default withRouter(connect(mapStateToProps, actions)(
   RegisterTeam,
-);
+));

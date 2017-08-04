@@ -16,7 +16,8 @@ export const createTeamAction = (
   userInput,
   tournamentId,
 ) => async dispatch => {
-  const res = await axios.post('/createTeam', {
+  console.log(userInput);
+  const res = await axios.post('/api/v1/teams/createTeam', {
     ...userInput,
     tournament: tournamentId,
   });
