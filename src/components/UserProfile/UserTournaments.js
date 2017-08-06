@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom'
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom'
 
 import * as actions from '../../actions';
 import './user.css';
@@ -15,21 +14,31 @@ class UserTournaments extends Component {
     this.props.deleteTournamentAction(id);
   }
 
+  goToTournament(id) {
+    this.props.history.push(`/tournament-id/${id}`)
+  }
+
+  create(id){
+    this.props.createMatchesActions(id)
+  }
+
   render() {
     const tournaments = this.props.userTournyArr.map(
       (item, i) =>
-        <div className="tourny" key={item._id}>
+        (<div className="tourny" key={item._id}>
           <div className="tourny-number">
             <h2>
               {i + 1}
             </h2>
           </div>
           <div className="tourny-name">
-            <h2>
+            <h2 onClick={this.goToTournament.bind(this, item._id)}>
               {item.tournamentName}
             </h2>
+            <h4>{item.teams.length}/{item.numberOfTeams}</h4>
           </div>
           <div className="tourny-actions">
+            <button onClick={this.create.bind(this, item._id)}>Create Matches</button>
             <button>update</button>
             <button
               onClick={this.deleteTourny.bind(
@@ -40,7 +49,7 @@ class UserTournaments extends Component {
               delete
             </button>
           </div>
-        </div>,
+        </div>)
     );
 
     if (!this.props.userTournyArr) {
@@ -57,15 +66,12 @@ class UserTournaments extends Component {
 UserTournaments.defaultProps = {
   userTournyArr: [],
 };
-UserTournaments.propTypes = {
-  userTournyArr: PropTypes.array,
-};
 
 const mapStateToProps = ({ user, tournament }) => ({
   userTournyArr: tournament.userTournaments,
   id: user._id,
 });
 
-export default connect(mapStateToProps, actions)(
+export default withRouter(connect(mapStateToProps, actions)(
   UserTournaments,
-);
+));

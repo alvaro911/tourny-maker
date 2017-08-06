@@ -52,6 +52,10 @@ class RegisterTeam extends Component {
     })
   }
 
+  goBack(){
+    window.history.back()
+  }
+
   render() {
     if(!this.props.t){
       return <h1>loading...</h1>
@@ -117,6 +121,7 @@ class RegisterTeam extends Component {
           {fields}
           <button>Register Team</button>
         </form>
+        <button onClick={() => this.goBack()}>back</button>
       </div>
     );
   }

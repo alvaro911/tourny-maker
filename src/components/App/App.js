@@ -15,6 +15,7 @@ import RegisterTeam from '../RegisterTeam/RegisterTeam';
 import UserProfile from '../UserProfile/UserProfile';
 import UserUpdate from '../UserProfile/UserUpdate';
 import UserTournaments from '../UserProfile/UserTournaments';
+import TeamInTournament from '../TeamInTournament/TeamInTournament'
 import { checkIfAuth } from '../../actions/userActions';
 
 class App extends Component {
@@ -65,6 +66,7 @@ class App extends Component {
               path="/me/tournaments"
               component={UserTournaments}
             />
+          <Route exact path="/tournament-id/:id" component={TeamInTournament} />
           </main>
         </div>
       </Router>

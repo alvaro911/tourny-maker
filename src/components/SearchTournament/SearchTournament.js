@@ -17,8 +17,9 @@ class SearchTournament extends Component {
   }
 
   render() {
-    const tournamentArr = this.props.tData.map(item =>
-      <div key={item._id} className="tournament-card">
+    const tournamentArr = this.props.tData.map((item, i) =>
+      { console.log(i);
+        return (<div key={i} className="tournament-card">
         <h3>
           {item.tournamentName}
         </h3>
@@ -41,7 +42,8 @@ class SearchTournament extends Component {
         >
           Register Team
         </button>
-      </div>,
+      </div>)
+      }
     );
     if (!this.props.tData) {
       return (
@@ -63,18 +65,6 @@ class SearchTournament extends Component {
           participate in. Pay attenttion when we the
           tournament starts.
         </p>
-        {
-          // <form className="tournament-form">
-          //   <label htmlFor="state">State</label>
-          //   <input name="state" className="location" type="text" />
-          //   <label htmlFor="city">City</label>
-          //   <input name="city" className="location" type="text" />
-          //   <label htmlFor="zipCode">Zip code</label>
-          //   <input name="zipCode" className="location" type="text" />
-          //
-          //   <button type="submit">Search</button>
-          // </form>
-        }
         <div className="tournament-list">
           {tournamentArr}
         </div>
@@ -82,12 +72,6 @@ class SearchTournament extends Component {
     );
   }
 }
-SearchTournament.defaultProps = {
-  tData: [],
-};
-SearchTournament.propTypes = {
-  tData: PropTypes.array.isRequired,
-};
 
 const mapStateToProps = ({ tournament }) => ({
   tData: tournament.tournaments,

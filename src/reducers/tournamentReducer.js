@@ -31,6 +31,7 @@ export default (state = initialState, action) => {
     }
     case 'CREATE_TOURNAMENT':
     case 'FETCH_TOURNAMENT':
+    case 'CREATE_MATCHES':
       return {
         ...state,
         tournaments: [...state.tournaments, action.payload],

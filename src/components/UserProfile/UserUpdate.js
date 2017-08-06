@@ -88,15 +88,14 @@ class UserUpdate extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => {
-  console.log('UserUpdate', user);
-  return {
+const mapStateToProps = ({ user }) => (
+  {
     userName: user.userName,
     firstName: user.firstName,
     lastName: user.lastName,
     _id: user._id,
-  };
-};
+  }
+);
 
 export default withRouter(
   connect(mapStateToProps, actions)(UserUpdate),
