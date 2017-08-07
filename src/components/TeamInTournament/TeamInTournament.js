@@ -5,12 +5,17 @@ import * as actions from '../../actions'
 
 class TeamInTournament extends Component{
   componentWillMount(){
-    this.props.getTournamentById(this.props.match.params.id)
-    this.props.getMatchesAction(this.props.match.params.id)
+    const paramsId = this.props.match.params.id
+    this.props.getTournamentById(paramsId)
+    this.props.getMatchesAction(paramsId)
   }
 
   goBack(){
     window.history.back()
+  }
+
+  goToMatch(id){
+    this.props.history.push(`/match/${id}`)
   }
 
   render(){
@@ -24,15 +29,22 @@ class TeamInTournament extends Component{
 
     const teams = this.props.tourny.teams.map(team => (
       <div key={team._id}>
-        <h3>{team.teamName}</h3>
+        <h3>{team.teamName} {team.points} {team.totalGoals}</h3>
       </div>
     ))
 
-    const matches = this.props.tourny.matches.map(match => (
-      <div>
-        hello
+    const results = this.props.matchArr.map(result => (
+      <div key={result._id}>
+        <p onClick={this.goToMatch.bind(this, result._id)}>{result.teamA.teamName} {result.goalsA} - {result.goalsB} {result.teamB.teamName}</p>
       </div>
     ))
+
+    const matches = this.props.matchArr.map(match => (
+      <div key={match._id}>
+        <h3>Week {match.round}</h3>
+        <p>{match.teamA.teamName} vs {match.teamB.teamName}</p>
+      </div>
+    )).sort((a, b) => a.round > b.round)
 
     return(
       <div>
@@ -45,23 +57,27 @@ class TeamInTournament extends Component{
           </div>
         </div>
         <div className="teams-list">
-          <h2>Teams</h2>
+          <h2>Leaderboard</h2>
           {teams}
         </div>
         <div>
-          <h2>Matches</h2>
+          <h2>Upcoming matches</h2>
           {matches}
+        </div>
+        <div>
+          <h2>Match results</h2>
+          {results}
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({tournament, match}) => {
-  console.log(match);
-  return {
-  tourny: tournament.tournaments[0]
+const mapStateToProps = ({tournament, match}, ownProps) => (
+  {
+    tourny: tournament.tournaments.find(f => f._id === ownProps.match.params.id),
+    matchArr: match.matches,
   }
-}
+)
 
 export default connect(mapStateToProps, actions)(TeamInTournament)
