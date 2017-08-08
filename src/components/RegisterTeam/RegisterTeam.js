@@ -14,10 +14,12 @@ class RegisterTeam extends Component {
     };
   }
 
-  componentWillMount() {
-    this.props.getTournamentById(
-      this.props.match.params.id,
-    );
+  componentDidMount() {
+    if (!this.props.t) {
+      this.props.getTournamentById(
+        this.props.match.params.id,
+      );
+    }
   }
 
   async submitForm(e) {
@@ -127,8 +129,8 @@ class RegisterTeam extends Component {
   }
 }
 
-const mapStateToProps = ({ tournament }) => ({
-  t: tournament.tournaments[0],
+const mapStateToProps = ({ tournament }, ownProps) => ({
+  t: tournament.tournaments.find(f => f._id === ownProps.match.params.id),
 });
 
 export default withRouter(connect(mapStateToProps, actions)(

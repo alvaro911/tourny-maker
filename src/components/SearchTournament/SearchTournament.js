@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Spinner from 'react-spinkit';
 
 import * as actions from '../../actions';
 import './SearchTournament.css';
 
 class SearchTournament extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getTournamentsActions();
   }
 
@@ -18,8 +17,8 @@ class SearchTournament extends Component {
 
   render() {
     const tournamentArr = this.props.tData.map((item, i) =>
-      { console.log(i);
-        return (<div key={i} className="tournament-card">
+      { console.log(item._id);
+        return (<div key={item._id} className="tournament-card">
         <h3>
           {item.tournamentName}
         </h3>

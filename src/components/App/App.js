@@ -16,7 +16,9 @@ import UserProfile from '../UserProfile/UserProfile';
 import UserUpdate from '../UserProfile/UserUpdate';
 import UserTournaments from '../UserProfile/UserTournaments';
 import TeamInTournament from '../TeamInTournament/TeamInTournament'
+import MatchResult from '../TeamInTournament/MatchResult'
 import { checkIfAuth } from '../../actions/userActions';
+import PrivateRoute from '../PrivateRoute';
 
 class App extends Component {
   componentWillMount() {
@@ -67,6 +69,7 @@ class App extends Component {
               component={UserTournaments}
             />
           <Route exact path="/tournament-id/:id" component={TeamInTournament} />
+          <Route exact path="/match/:id" component={MatchResult} />
           </main>
         </div>
       </Router>

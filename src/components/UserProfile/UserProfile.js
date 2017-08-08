@@ -24,7 +24,14 @@ class UserProfile extends Component {
           </h3>
         </div>
         <Link to="/me/update">Update profile</Link>
-        <Link to="/me/tournaments">My Tournaments</Link>
+        {
+          (this.props.role === 'CREATOR')
+          ?
+            <Link to="/me/tournaments">My Tournaments</Link>
+          :
+            <p>stuff for players</p>
+        }
+
       </div>
     );
   }
@@ -36,6 +43,7 @@ const mapStateToProps = ({ user }) => ({
   lastName: user.lastName,
   email: user.email,
   id: user.id,
+  role: user.role
 });
 
 export default connect(mapStateToProps, actions)(
