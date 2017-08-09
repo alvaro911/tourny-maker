@@ -65,8 +65,9 @@ export const getMatchById = id => async dispatch => {
 };
 
 export const finalRes = (id, args) => async dispatch => {
+  console.log(args);
   try {
-    const res = axios.patch(`/api/v1/matches/${id}`, args);
+    const res = await axios.patch(`/api/v1/matches/${id}`, args);
     return dispatch(updateRes(res.data));
   } catch (e) {
     console.log({ e });

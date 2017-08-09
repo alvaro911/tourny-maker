@@ -17,12 +17,11 @@
   height: auto;
   padding: 10px;
   margin-bottom: 15px;
-  background-color: #ebebeb;
+  background-color: #342B3A;
 }
 
 .team-reg-btn{
   border: 0;
-  background-color: rgb(130, 130, 130);
   width: 100%;
   margin: 0 0 10px;
 }

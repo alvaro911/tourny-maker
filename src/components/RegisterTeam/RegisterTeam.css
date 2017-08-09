@@ -13,7 +13,12 @@ article{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin:25px 0 45px;
   justify-content: space-between;
+}
+
+.register-form button{
+  width: 60%;
 }
 
 .teamName{

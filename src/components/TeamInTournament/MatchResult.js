@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 class MatchResult extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       goalsA: 0,
       goalsB: 0,
@@ -16,10 +16,14 @@ class MatchResult extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (!this.props.m) {
-      this.props.getMatchById(this.props.match.params.id);
+      await this.props.getMatchById(this.props.match.params.id);
     }
+    this.setState({
+      teamA: this.props.m.teamA._id,
+      teamB: this.props.m.teamA._id,
+    })
   }
 
   async submitResult(e) {
@@ -27,14 +31,12 @@ class MatchResult extends Component {
     try {
       this.setState({
         fullTime: true,
-        teamA: this.props.m.teamA._id,
-        teamB: this.props.m.teamB._id,
       });
       await this.props.finalRes(
         this.props.match.params.id,
         this.state,
       );
-      window.history.back();
+      this.props.history.push(`/tournament-id/${this.props.m.tournamentId}`);
     } catch (err) {
       throw err;
     }
