@@ -1,10 +1,31 @@
+.user-profile{
+  color: white;
+}
+
+.user-profile h1{
+  text-align: left;
+}
+
+.userInfo b{
+  color: #F89633;
+}
+
 .update-user form{
+  width: 40%;
+  margin: 60px auto;
   display: flex;
   flex-direction: column;
 }
 
-.update-fields{
-  display: flex;
+.update-user label{
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #F89633;
+}
+
+.update-user form button{
+  width: 40%;
+  margin-top: 45px;
 }
 
 .tourny{
@@ -12,11 +33,17 @@
   height: auto;
   display: flex;
   padding: 3em 2em;
-  align-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
 }
 
-.tourny:nth-child(even){
-  background-color: rgb(230, 230, 230)
+.tourny:hover{
+  border: 2px solid #F89633;
 }
 
 .tourny-number{
@@ -31,8 +58,9 @@
   width: 20%;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .tourny-actions button{
-  width: 40%
+  width: 100%
 }

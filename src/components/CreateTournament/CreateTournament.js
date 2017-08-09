@@ -42,28 +42,8 @@ class CreateTournament extends Component {
     return (
       <div className="create-tournament">
         <article>
-          <h2 className="Anton">Instructions</h2>
-          Maecenas non justo mollis, tempus libero vel,
-          auctor quam. Vestibulum vestibulum mattis ligula
-          at congue. Donec felis sapien, vulputate eget
-          dolor vitae, ornare lobortis tellus. Etiam sed
-          ullamcorper lorem. Nulla semper urna ut odio
-          dictum auctor id quis lacus. Pellentesque turpis
-          tortor, egestas et faucibus id, semper mollis
-          magna. Pellentesque hendrerit ultricies ex, vel
-          porttitor elit eleifend eget. Cras imperdiet
-          fermentum nibh, id tempus magna gravida a.
-          <h2 className="Anton">Instructions 2</h2>
-          Maecenas non justo mollis, tempus libero vel,
-          auctor quam. Vestibulum vestibulum mattis ligula
-          at congue. Donec felis sapien, vulputate eget
-          dolor vitae, ornare lobortis tellus. Etiam sed
-          ullamcorper lorem. Nulla semper urna ut odio
-          dictum auctor id quis lacus. Pellentesque turpis
-          tortor, egestas et faucibus id, semper mollis
-          magna. Pellentesque hendrerit ultricies ex, vel
-          porttitor elit eleifend eget. Cras imperdiet
-          fermentum nibh, id tempus magna gravida a.
+          <h2 className="Source-Sans">Instructions</h2>
+          <p>Ready to start a new excitement and riveting championship? We can't wait to see it in action either! In order to get this started we you need to fill out this application. <span>Note that all of the fields are required</span>, once you submit your form, go to the dashboard to keep an eye the teams registered, once you have a number of teams that you need click the create calendar button, this will create a round robin (every team will play each other once) type league where the team with more points wins.</p>
         </article>
         <div className="make-team">
           <form onSubmit={this.onSubmit}>

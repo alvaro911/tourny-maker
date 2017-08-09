@@ -4,10 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(../../img/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .home-nav{
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -16,18 +20,46 @@
   height: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
-.home-nav-card{
-  width: 90%;
-  height: auto;
+.home-nav-card-1,
+.home-nav-card-2,
+.home-nav-card-3{
+  width: 33.3vw;
+  overflow: auto;
+  height: 90vh;
+  color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+  font-size:25px;
 }
 
-.home-nav-image{
-  width: 100%;
-  height: auto;
+.home-nav-card-1:hover{
+  background-image: url(../../img/create-t.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.home-nav-card-2:hover{
+  background-image: url(../../img/team-bg.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.home-nav-card-3:hover{
+  background-image: url(../../img/settings.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 h4{

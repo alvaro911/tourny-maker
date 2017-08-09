@@ -16,33 +16,37 @@ class SearchTournament extends Component {
   }
 
   render() {
-    const tournamentArr = this.props.tData.map((item, i) =>
-      { console.log(item._id);
-        return (<div key={item._id} className="tournament-card">
-        <h3>
-          {item.tournamentName}
-        </h3>
-        <p>Teams in the league</p>
-        <p>
-          {item.teams.length}/{item.numberOfTeams}
-        </p>
-        <p>
-          City: {item.city}
-        </p>
-        <h5>
-          Start Date: {item.startDate}
-        </h5>
-        <h5>
-          Created by: {item.user.userName}
-        </h5>
-        <button
-          className="team-reg-btn"
-          onClick={this.toRegTeam.bind(this, item._id)}
-        >
-          Register Team
-        </button>
-      </div>)
-      }
+    const tournamentArr = this.props.tData.map(
+      item =>
+        item.teams.length !== item.numberOfTeams
+          ? <div key={item._id} className="tournament-card">
+              <h3>
+                {item.tournamentName}
+              </h3>
+              <p>Teams in the league</p>
+              <p>
+                {item.teams.length}/{item.numberOfTeams}
+              </p>
+              <p>
+                City: {item.city}
+              </p>
+              <h5>
+                Start Date: {item.startDate}
+              </h5>
+              <h5>
+                Created by: {item.user.userName}
+              </h5>
+              <button
+                className="team-reg-btn"
+                onClick={this.toRegTeam.bind(
+                  this,
+                  item._id,
+                )}
+              >
+                Register Team
+              </button>
+            </div>
+          : null,
     );
     if (!this.props.tData) {
       return (
@@ -57,7 +61,7 @@ class SearchTournament extends Component {
     }
     return (
       <div className="search-tournament">
-        <h2 className="Anton">Search for a league</h2>
+        <h2 className="Source-Sans">Search for a league</h2>
         <p>
           Ready to show the world what you and your friends
           are made of? Pick the tournament you would like to

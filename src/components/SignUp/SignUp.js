@@ -14,7 +14,7 @@ class SignUp extends Component {
       firstName: '',
       lastName: '',
       confirmPassword: '',
-      role: 'PLAYER'
+      role: 'PLAYER',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.userInfo = this.userInfo.bind(this);
@@ -39,7 +39,7 @@ class SignUp extends Component {
   roleChange(e) {
     this.setState({
       role: e.target.value,
-    })
+    });
   }
 
   render() {
@@ -79,11 +79,14 @@ class SignUp extends Component {
               type="email"
               required
             />
-          <label htmlFor="role">Role</label>
-          <select value={this.state.role} onChange={e => this.roleChange(e)}>
-            <option value="CREATOR">Ceator</option>
-            <option value="PLAYER">Player</option>
-          </select>
+            <label htmlFor="role">Role</label>
+            <select
+              value={this.state.role}
+              onChange={e => this.roleChange(e)}
+            >
+              <option value="CREATOR">Ceator</option>
+              <option value="PLAYER">Player</option>
+            </select>
             <label htmlFor="password">Password</label>
             <input
               onChange={this.userInfo}

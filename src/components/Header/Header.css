@@ -6,6 +6,11 @@ nav{
   position: relative;
 }
 
+nav h1{
+  font-size: 55px;
+  color: #703ca6;
+}
+
 ul{
   width: 30%;
   display: flex;

@@ -8,11 +8,11 @@ class UserProfile extends Component {
   render() {
     return (
       <div className="user-profile">
-        <h1>User profile</h1>
-        <h2>
-          {this.props.user}
-        </h2>
+        <h1 className="Source-Sans">User profile</h1>
         <div className="userInfo">
+          <h2>
+            <b>Username</b> {this.props.user}
+          </h2>
           <h3>
             <b>Name</b> {this.props.firstName}
           </h3>
@@ -23,15 +23,7 @@ class UserProfile extends Component {
             <b>E-mail</b> {this.props.email}
           </h3>
         </div>
-        <Link to="/me/update">Update profile</Link>
-        {
-          (this.props.role === 'CREATOR')
-          ?
-            <Link to="/me/tournaments">My Tournaments</Link>
-          :
-            <p>stuff for players</p>
-        }
-
+        <Link to="/me/update"><button>Update profile</button></Link>
       </div>
     );
   }
@@ -43,7 +35,7 @@ const mapStateToProps = ({ user }) => ({
   lastName: user.lastName,
   email: user.email,
   id: user.id,
-  role: user.role
+  role: user.role,
 });
 
 export default connect(mapStateToProps, actions)(

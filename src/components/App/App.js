@@ -15,10 +15,10 @@ import RegisterTeam from '../RegisterTeam/RegisterTeam';
 import UserProfile from '../UserProfile/UserProfile';
 import UserUpdate from '../UserProfile/UserUpdate';
 import UserTournaments from '../UserProfile/UserTournaments';
-import TeamInTournament from '../TeamInTournament/TeamInTournament'
-import MatchResult from '../TeamInTournament/MatchResult'
+import TeamInTournament from '../TeamInTournament/TeamInTournament';
+import MatchResult from '../TeamInTournament/MatchResult';
 import { checkIfAuth } from '../../actions/userActions';
-import PrivateRoute from '../PrivateRoute';
+// import PrivateRoute from '../PrivateRoute';
 
 class App extends Component {
   componentWillMount() {
@@ -30,8 +30,8 @@ class App extends Component {
       <Router>
         <div className="app">
           <Header />
+          <Route exact path="/" component={Home} />
           <main>
-            <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route
               exact
@@ -68,8 +68,16 @@ class App extends Component {
               path="/me/tournaments"
               component={UserTournaments}
             />
-          <Route exact path="/tournament-id/:id" component={TeamInTournament} />
-          <Route exact path="/match/:id" component={MatchResult} />
+            <Route
+              exact
+              path="/tournament-id/:id"
+              component={TeamInTournament}
+            />
+            <Route
+              exact
+              path="/match/:id"
+              component={MatchResult}
+            />
           </main>
         </div>
       </Router>

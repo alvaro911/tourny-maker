@@ -25,7 +25,7 @@ export function checkIfAuth() {
       const lastName = localStorage.getItem('lastName');
       const email = localStorage.getItem('email');
       const _id = localStorage.getItem('_id');
-      const role = localStorage.getItem('role')
+      const role = localStorage.getItem('role');
       if (token && userName) {
         return dispatch(
           authenticate({
@@ -35,7 +35,7 @@ export function checkIfAuth() {
             lastName,
             email,
             _id,
-            role
+            role,
           }),
         );
       }
@@ -56,7 +56,7 @@ export const loginAction = userInput => async dispatch => {
   localStorage.setItem('lastName', res.data.lastName);
   localStorage.setItem('email', res.data.email);
   localStorage.setItem('_id', res.data._id);
-  localStorage.setItem('role', res.data.role)
+  localStorage.setItem('role', res.data.role);
   return dispatch(authenticate(res.data));
 };
 
@@ -71,7 +71,7 @@ export const signUp = userInput => async dispatch => {
   localStorage.setItem('lastName', res.data.lastName);
   localStorage.setItem('email', res.data.email);
   localStorage.setItem('_id', res.data._id);
-  localStorage.setItem('role', res.data.role)
+  localStorage.setItem('role', res.data.role);
   return dispatch(authenticate(res.data));
 };
 
@@ -96,7 +96,7 @@ export const logout = () => async dispatch => {
   localStorage.removeItem('lastName');
   localStorage.removeItem('email');
   localStorage.removeItem('_id');
-  localStorage.removeItem('role')
+  localStorage.removeItem('role');
   return dispatch(removeToken());
 };
 
@@ -108,6 +108,6 @@ export const deleteAction = id => async dispatch => {
   localStorage.removeItem('lastName');
   localStorage.removeItem('email');
   localStorage.removeItem('_id');
-  localStorage.removeItem('role')
+  localStorage.removeItem('role');
   return dispatch(deleteUser());
 };

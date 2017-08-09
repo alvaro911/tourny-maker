@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 import './RegisterTeam.css';
@@ -26,11 +26,14 @@ class RegisterTeam extends Component {
     e.preventDefault();
     const tournamentId = this.props.match.params.id;
     try {
-      await this.props.createTeamAction({
-        teamName: this.state.teamName,
-        players: Object.values(this.state.players)
-      }, tournamentId)
-      this.props.history.push('/')
+      await this.props.createTeamAction(
+        {
+          teamName: this.state.teamName,
+          players: Object.values(this.state.players),
+        },
+        tournamentId,
+      );
+      this.props.history.push('/');
     } catch (err) {
       throw e;
     }
@@ -42,29 +45,31 @@ class RegisterTeam extends Component {
         ...this.state.players,
         [i]: {
           ...this.state.players[i],
-          [e.target.name]: e.target.value
-        }
-      }
+          [e.target.name]: e.target.value,
+        },
+      },
     });
   }
 
   teamNameInfo(e) {
     this.setState({
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   }
 
-  goBack(){
-    window.history.back()
+  goBack() {
+    window.history.back();
   }
 
   render() {
-    if(!this.props.t){
-      return <h1>loading...</h1>
+    if (!this.props.t) {
+      return <h1>loading...</h1>;
     }
 
-    const fields = Array.from({length: this.props.t.minimumNumPlayers}).map((field, i) =>
-      (<div key={i} className="player-field-container">
+    const fields = Array.from({
+      length: this.props.t.minimumNumPlayers,
+    }).map((field, i) =>
+      <div key={i} className="player-field-container">
         <div className="name">
           <label htmlFor="playerName">Name</label>
           <input
@@ -72,7 +77,11 @@ class RegisterTeam extends Component {
             name="playerName"
             type="text"
             placeholder="Name"
-            value={this.state.players[i] != null ? this.state.players[i].playerName : ''}
+            value={
+              this.state.players[i] != null
+                ? this.state.players[i].playerName
+                : ''
+            }
             onChange={e => this.teamInfo(e, i)}
           />
         </div>
@@ -83,26 +92,23 @@ class RegisterTeam extends Component {
             name="playerNumber"
             type="text"
             placeholder="10"
-            value={this.state.players[i] != null ? this.state.players[i].playerNumber : ''}
+            value={
+              this.state.players[i] != null
+                ? this.state.players[i].playerNumber
+                : ''
+            }
             onChange={e => this.teamInfo(e, i)}
           />
         </div>
-      </div>)
+      </div>,
     );
     return (
       <div className="register-team">
         <article>
-          <h2 className="Anton">Instructions</h2>
-          Maecenas non justo mollis, tempus libero vel,
-          auctor quam. Vestibulum vestibulum mattis ligula
-          at congue. Donec felis sapien, vulputate eget
-          dolor vitae, ornare lobortis tellus. Etiam sed
-          ullamcorper lorem. Nulla semper urna ut odio
-          dictum auctor id quis lacus. Pellentesque turpis
-          tortor, egestas et faucibus id, semper mollis
-          magna. Pellentesque hendrerit ultricies ex, vel
-          porttitor elit eleifend eget. Cras imperdiet
-          fermentum nibh, id tempus magna gravida a.
+          <h2 className="Source-Sans">Instructions</h2>
+            You're about to create the team that has the potential to rule over everyone in this league. Are you ready to bring them down? Perfect! <br />
+            In order to get you started on the road towards domination, you need to fill out this form. Note that all the fields are required.
+            Once your team is created and the tournament has started look in your dashboard to see how your team is performing.
         </article>
         <form
           className="register-form"
@@ -130,9 +136,11 @@ class RegisterTeam extends Component {
 }
 
 const mapStateToProps = ({ tournament }, ownProps) => ({
-  t: tournament.tournaments.find(f => f._id === ownProps.match.params.id),
+  t: tournament.tournaments.find(
+    f => f._id === ownProps.match.params.id,
+  ),
 });
 
-export default withRouter(connect(mapStateToProps, actions)(
-  RegisterTeam,
-));
+export default withRouter(
+  connect(mapStateToProps, actions)(RegisterTeam),
+);

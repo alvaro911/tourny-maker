@@ -48,30 +48,24 @@ class UserUpdate extends Component {
     return (
       <div className="update-user">
         <form onSubmit={this.onSubmit}>
-          <div className="update-fields">
             <label htmlFor="firstName">Name</label>
             <input
               onChange={this.updateInfo}
               name="firstName"
               value={this.state.firstName}
             />
-          </div>
-          <div className="update-fields">
             <label htmlFor="lastName">Last name</label>
             <input
               onChange={this.updateInfo}
               name="lastName"
               value={this.state.lastName}
             />
-          </div>
-          <div className="update-fields">
             <label htmlFor="userName">Username</label>
             <input
               onChange={this.updateInfo}
               name="userName"
               value={this.state.userName}
             />
-          </div>
 
           <button type="submit">Submit</button>
         </form>
@@ -88,14 +82,12 @@ class UserUpdate extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => (
-  {
-    userName: user.userName,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    _id: user._id,
-  }
-);
+const mapStateToProps = ({ user }) => ({
+  userName: user.userName,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  _id: user._id,
+});
 
 export default withRouter(
   connect(mapStateToProps, actions)(UserUpdate),
