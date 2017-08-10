@@ -31,6 +31,11 @@ class App extends Component {
         <div className="app">
           <Header />
           <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/tournament-id/:id"
+            component={TeamInTournament}
+          />
           <main>
             <Route exact path="/login" component={Login} />
             <Route
@@ -67,11 +72,6 @@ class App extends Component {
               exact
               path="/me/tournaments"
               component={UserTournaments}
-            />
-            <Route
-              exact
-              path="/tournament-id/:id"
-              component={TeamInTournament}
             />
             <Route
               exact

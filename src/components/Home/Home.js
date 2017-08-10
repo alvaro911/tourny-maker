@@ -50,7 +50,7 @@ function Home({ user }) {
             <div className="home-nav-card-3">
               <div className="home-nav-image">
 
-                <h4>Existing tournament</h4>
+                <h4>Dashboard</h4>
               </div>
             </div>
           </Link>

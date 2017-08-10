@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 import * as actions from '../../actions';
+import './tournament.css'
 
 class TeamInTournament extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const paramsId = this.props.match.params.id;
     this.props.getTournamentById(paramsId);
     this.props.getMatchesAction(paramsId);
   }
 
   goBack() {
-    window.history.back();
+    this.props.history.push('/me/tournaments');
   }
 
   goToMatch(id) {
@@ -28,35 +30,49 @@ class TeamInTournament extends Component {
     }
 
     const teams = this.props.tourny.teams.map(team =>
-      <div key={team._id}>
-        <h3>
-          {team.teamName} {team.points} {team.totalGoals}
-        </h3>
-      </div>,
+      (<div key={team._id} className="team-stats">
+          <div className="team-name">
+            <h3>
+              {team.teamName}
+            </h3>
+          </div>
+          <div className="team-goals">
+            <h3>
+              {team.totalGoals}
+            </h3>
+          </div>
+          <div className="team-points">
+            <h3>
+              {team.points}
+            </h3>
+          </div>
+      </div>),
     );
 
     const results = this.props.matchArr.map(result =>
-      <div key={result._id}>
+      (<div key={result._id}>
         <p onClick={this.goToMatch.bind(this, result._id)}>
           {result.teamA.teamName} {result.goalsA} -{' '}
           {result.goalsB} {result.teamB.teamName}
         </p>
-      </div>,
+      </div>),
     );
 
     const matches = this.props.matchArr
       .map(match =>
-        <div key={match._id}>
+        (<div key={match._id}>
           <h3>
             Week {match.round}
           </h3>
           <p>
             {match.teamA.teamName} vs {match.teamB.teamName}
           </p>
-        </div>,
+        </div>),
       )
       .sort((a, b) => a.round > b.round);
 
+    const tdate = this.props.tourny.startDate
+    const date = (new Date(tdate)).toLocaleString()
     return (
       <div>
         <div className="tournament">
@@ -65,7 +81,7 @@ class TeamInTournament extends Component {
           </h2>
           <div className="tournament-nav">
             <p>
-              {this.props.tourny.startDate}
+              {date}
             </p>
             <p>
               {this.props.tourny.address},{' '}
@@ -77,17 +93,19 @@ class TeamInTournament extends Component {
             </button>
           </div>
         </div>
-        <div className="teams-list">
-          <h2>Leaderboard</h2>
-          {teams}
-        </div>
-        <div>
-          <h2>Upcoming matches</h2>
-          {matches}
-        </div>
-        <div>
-          <h2>Match results</h2>
-          {results}
+        <div className="tournament-stats">
+          <div className="teams-list stats">
+            <h2>Leaderboard</h2>
+            {teams}
+          </div>
+          <div className="stats">
+            <h2>Upcoming matches</h2>
+            {matches}
+          </div>
+          <div className="stats">
+            <h2>Match results</h2>
+            {results}
+          </div>
         </div>
       </div>
     );
@@ -104,6 +122,6 @@ const mapStateToProps = (
   matchArr: match.matches,
 });
 
-export default connect(mapStateToProps, actions)(
+export default withRouter(connect(mapStateToProps, actions)(
   TeamInTournament,
-);
+));

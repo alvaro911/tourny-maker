@@ -1,0 +1,58 @@
+.tournament{
+  width: 100%;
+  height: auto;
+  padding: 2em 1em;
+  display: flex;
+  background-color: #342B3A;
+  justify-content: space-between;
+}
+
+.tournament-nav{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tournament-nav button{
+  margin: 0;
+}
+
+.tournament-stats{
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats{
+  width: 32%;
+  background-color: #342B3A;
+}
+
+.stats h2{
+  text-align: center;
+}
+
+.stats:hover{
+  background-color: #673787;
+}
+
+.team-stats{
+  width: 100%;
+  display: flex;
+}
+
+.team-name{
+  width: 70%;
+  padding-left: 1em;
+}
+
+.team-goals, .team-points{
+  width: 15%;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.team-goals{
+  border-right: 1px solid rgb(189, 158, 26);
+  border-left: 1px solid rgb(189, 158, 26);
+}
