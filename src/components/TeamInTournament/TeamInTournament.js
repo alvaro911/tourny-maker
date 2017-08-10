@@ -55,12 +55,13 @@ class TeamInTournament extends Component {
           {result.teamA.teamName} {result.goalsA} -{' '}
           {result.goalsB} {result.teamB.teamName}
         </p>
+        {(result.fullTime === true) ? <p>final</p> : null}
       </div>),
     );
 
     const matches = this.props.matchArr
       .map(match =>
-        (<div key={match._id}>
+        (<div key={match._id} className="week">
           <h3>
             Week {match.round}
           </h3>

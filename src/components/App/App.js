@@ -17,6 +17,7 @@ import UserUpdate from '../UserProfile/UserUpdate';
 import UserTournaments from '../UserProfile/UserTournaments';
 import TeamInTournament from '../TeamInTournament/TeamInTournament';
 import MatchResult from '../TeamInTournament/MatchResult';
+import UserTeam from '../UserProfile/UserTeam'
 import { checkIfAuth } from '../../actions/userActions';
 // import PrivateRoute from '../PrivateRoute';
 
@@ -72,6 +73,11 @@ class App extends Component {
               exact
               path="/me/tournaments"
               component={UserTournaments}
+            />
+            <Route
+              exact
+              path="/me/teams"
+              component={UserTeam}
             />
             <Route
               exact

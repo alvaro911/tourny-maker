@@ -23,12 +23,13 @@ export default (state = initialState, action) => {
         ...state,
         tournaments: action.payload,
       };
-    case 'FETCH_TOURNAMENTS_BY_USER_ID': {
+    case 'FETCH_TOURNAMENTS_BY_USER_ID':
+    case 'UPDATE_TOURNAMENT':
       return {
         ...state,
         userTournaments: action.payload,
       };
-    }
+
     case 'CREATE_TOURNAMENT':
     case 'FETCH_TOURNAMENT':
     case 'CREATE_MATCHES':

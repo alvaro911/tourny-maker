@@ -89,3 +89,12 @@ export const deleteTournamentAction = id => async dispatch => {
     console.log({ e });
   }
 };
+
+export const updateTournament = id => async dispatch => {
+  try {
+    const res = await axios.patch(`/api/v1/tournaments/${id}`);
+    return dispatch(update(res.data))
+  } catch (e) {
+    console.log({e});
+  }
+}

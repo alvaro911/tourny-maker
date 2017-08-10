@@ -31,7 +31,7 @@ class SearchTournament extends Component {
                 City: {item.city}
               </p>
               <h5>
-                Start Date: {item.startDate}
+                Start Date: {(new Date(item.startDate)).toLocaleString()}
               </h5>
               <h5>
                 Created by: {item.user.userName}

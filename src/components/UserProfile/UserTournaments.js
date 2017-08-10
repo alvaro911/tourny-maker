@@ -25,30 +25,31 @@ class UserTournaments extends Component {
   render() {
     const tournaments = this.props.userTournyArr.map(
       (item, i) =>
-        <div className="tourny" key={item._id}>
+        <div className="tourny" key={item._id} onClick={this.goToTournament.bind(
+          this,
+          item._id,
+        )}>
           <div className="tourny-number">
             <h2>
               {i + 1}
             </h2>
           </div>
-          <div className="tourny-name" onClick={this.goToTournament.bind(
-            this,
-            item._id,
-          )}>
+          <div className="tourny-name">
             <h2>
               {item.tournamentName}
             </h2>
             <h3>
-              {item.teams.length}/{item.numberOfTeams}
+              Teams registered: {item.teams.length}/{item.numberOfTeams}
             </h3>
+            <h4>Starts: {(new Date(item.startDate)).toLocaleString()}</h4>
           </div>
           <div className="tourny-actions">
-            <button
+            {(item.teams.length === item.numberOfTeams) ? <button
               onClick={this.create.bind(this, item._id)}
             >
               Create Matches
-            </button>
-            <button>update</button>
+            </button> : null}
+            {(item.teams.length !== item.numberOfTeams) ? <button>update</button> : null}
             <button
               onClick={this.deleteTourny.bind(
                 this,
@@ -66,6 +67,7 @@ class UserTournaments extends Component {
     }
     return (
       <div>
+        <h1 className="Source-Sans">My Tournaments</h1>
         {tournaments}
       </div>
     );

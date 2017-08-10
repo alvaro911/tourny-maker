@@ -46,14 +46,25 @@ function Home({ user }) {
               </div>
             </div>
           </Link>
-          <Link to="/me/tournaments">
-            <div className="home-nav-card-3">
-              <div className="home-nav-image">
+          {(user.role === 'CREATOR')
+            ?
+            <Link to="/me/tournaments">
+              <div className="home-nav-card-3">
+                <div className="home-nav-image">
 
-                <h4>Dashboard</h4>
+                  <h4>Dashboard</h4>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+            :
+            <Link to="/me/teams">
+              <div className="home-nav-card-3">
+                <div>
+                  <h4>Team Dashboard</h4>
+                </div>
+              </div>
+            </Link>
+          }
         </div>
       </div>
     </div>
