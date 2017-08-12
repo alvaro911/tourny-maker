@@ -6,9 +6,9 @@ import * as actions from '../../actions';
 import './tournament.css'
 
 class TeamInTournament extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const paramsId = this.props.match.params.id;
-    this.props.getTournamentById(paramsId);
+    await this.props.getTournamentById(paramsId);
   }
 
   goBack() {
@@ -49,27 +49,39 @@ class TeamInTournament extends Component {
     );
 
     const results = this.props.tourny.matches.map(result =>
-      (<div key={result._id}>
-        <p onClick={this.goToMatch.bind(this, result._id)}>
+      (<div key={result._id} className="match">
+        <p>
           {result.teamA.teamName} {result.goalsA} -{' '}
           {result.goalsB} {result.teamB.teamName}
         </p>
-        {(result.fullTime === true) ? <p>final</p> : null}
+        {result.fullTime === true
+          ?
+            <p>Final</p>
+          :
+            null
+        }
+        {(result.fullTime === true && localStorage.getItem('role') === 'CREATOR')
+          ?
+            <button onClick={this.goToMatch.bind(this, result._id)}>Update</button>
+          :
+            null
+        }
       </div>),
     );
 
     const matches = this.props.tourny.matches
       .map(match =>
-        (<div key={match._id} className="week">
+        (match.fullTime !== true
+          ?
+          <div key={match._id} className="week" onClick={localStorage.getItem('role') === 'CREATOR' && this.goToMatch.bind(this, match._id)} >
           <h3>
             Week {match.round}
           </h3>
           <p>
             {match.teamA.teamName} vs {match.teamB.teamName}
           </p>
-        </div>),
+        </div> : null)
       )
-      .sort((a, b) => a.round > b.round);
 
     const tdate = this.props.tourny.startDate
     const date = (new Date(tdate)).toLocaleString()

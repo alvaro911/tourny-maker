@@ -10,8 +10,6 @@ class MatchResult extends Component {
     this.state = {
       goalsA: 0,
       goalsB: 0,
-      teamA: '',
-      teamB: '',
       fullTime: false,
     };
   }
@@ -21,22 +19,24 @@ class MatchResult extends Component {
       await this.props.getMatchById(this.props.match.params.id);
     }
     this.setState({
-      teamA: this.props.m.teamA._id,
-      teamB: this.props.m.teamA._id,
+      goalsA: this.props.m.goalsA,
+      goalsB: this.props.m.goalsB
     })
   }
 
   async submitResult(e) {
     e.preventDefault();
+    const path = this.props.m.tournamentId
     try {
       this.setState({
         fullTime: true,
       });
+      // console.log('WHAT IS M', this.props.m.tournamentId)
       await this.props.finalRes(
         this.props.match.params.id,
         this.state,
       );
-      this.props.history.push(`/tournament-id/${this.props.m.tournamentId}`);
+      this.props.history.goBack(`/tournament/${path}`)
     } catch (err) {
       throw err;
     }
