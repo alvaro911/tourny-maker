@@ -7,7 +7,7 @@ export default(state = initialState, action) => {
     case 'GET_TEAM':
       return {
         ...state,
-        teams: [action.payload]
+        teams: action.payload
       }
     default:
       return state

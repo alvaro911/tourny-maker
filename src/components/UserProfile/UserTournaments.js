@@ -7,7 +7,7 @@ import './user.css';
 
 class UserTournaments extends Component {
   componentWillMount() {
-    this.props.getTournamentsByUserId(this.props.id);
+    this.props.getTournamentsByUserId(localStorage.getItem('_id'));
   }
 
   deleteTourny(id) {
@@ -25,10 +25,7 @@ class UserTournaments extends Component {
   render() {
     const tournaments = this.props.userTournyArr.map(
       (item, i) =>
-        <div className="tourny" key={item._id} onClick={this.goToTournament.bind(
-          this,
-          item._id,
-        )}>
+        <div className="tourny" key={item._id}>
           <div className="tourny-number">
             <h2>
               {i + 1}
@@ -49,14 +46,18 @@ class UserTournaments extends Component {
             >
               Create Matches
             </button> : null}
-            {(item.teams.length !== item.numberOfTeams) ? <button>update</button> : null}
+            {(item.teams.length !== item.numberOfTeams) ? <button>Update</button> : null}
+            <button onClick={this.goToTournament.bind(
+              this,
+              item._id,
+            )}>Tournament Stats</button>
             <button
               onClick={this.deleteTourny.bind(
                 this,
                 item._id,
               )}
             >
-              delete
+              Delete
             </button>
           </div>
         </div>,
@@ -78,9 +79,8 @@ UserTournaments.defaultProps = {
   userTournyArr: [],
 };
 
-const mapStateToProps = ({ user, tournament }) => ({
+const mapStateToProps = ({ tournament }) => ({
   userTournyArr: tournament.userTournaments,
-  id: user._id,
 });
 
 export default withRouter(

@@ -8,12 +8,12 @@ export default (state = initialState, action) => {
     case 'MATCH_END':
       return {
         ...state,
-        matches: [action.payload],
+        matches: [...state, action.payload],
       };
     case 'GET_MATCHES':
       return {
         ...state,
-        matches: [...action.payload],
+        matches: [...state, action.payload],
       };
     default:
       return state;
