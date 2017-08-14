@@ -30,8 +30,15 @@ export default (state = initialState, action) => {
         userTournaments: action.payload,
       };
 
+    case 'FETCH_TOURNAMENT': {
+      const tournys = state.tournaments.filter(t => t._id !== action.payload._id);
+
+      return {
+        ...state,
+        tournaments: [...tournys, action.payload ],
+      };
+    }
     case 'CREATE_TOURNAMENT':
-    case 'FETCH_TOURNAMENT':
     case 'CREATE_MATCHES':
       return {
         ...state,
