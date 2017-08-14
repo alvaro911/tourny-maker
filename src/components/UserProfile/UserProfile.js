@@ -23,7 +23,9 @@ class UserProfile extends Component {
             <b>E-mail</b> {this.props.email}
           </h3>
         </div>
-        <Link to="/me/update"><button>Update profile</button></Link>
+        <Link to="/me/update">
+          <button>Update profile</button>
+        </Link>
       </div>
     );
   }

@@ -7,7 +7,9 @@ import './user.css';
 
 class UserTournaments extends Component {
   componentWillMount() {
-    this.props.getTournamentsByUserId(localStorage.getItem('_id'));
+    this.props.getTournamentsByUserId(
+      localStorage.getItem('_id'),
+    );
   }
 
   deleteTourny(id) {
@@ -38,19 +40,30 @@ class UserTournaments extends Component {
             <h3>
               Teams registered: {item.teams.length}/{item.numberOfTeams}
             </h3>
-            <h4>Starts: {(new Date(item.startDate)).toLocaleString()}</h4>
+            <h4>
+              Starts:{' '}
+              {new Date(item.startDate).toLocaleString()}
+            </h4>
           </div>
           <div className="tourny-actions">
-            {(item.teams.length === item.numberOfTeams) ? <button
-              onClick={this.create.bind(this, item._id)}
+            {item.teams.length === item.numberOfTeams
+              ? <button
+                  onClick={this.create.bind(this, item._id)}
+                >
+                  Create Matches
+                </button>
+              : null}
+            {item.teams.length !== item.numberOfTeams
+              ? <button>Update</button>
+              : null}
+            <button
+              onClick={this.goToTournament.bind(
+                this,
+                item._id,
+              )}
             >
-              Create Matches
-            </button> : null}
-            {(item.teams.length !== item.numberOfTeams) ? <button>Update</button> : null}
-            <button onClick={this.goToTournament.bind(
-              this,
-              item._id,
-            )}>Tournament Stats</button>
+              Tournament Stats
+            </button>
             <button
               onClick={this.deleteTourny.bind(
                 this,

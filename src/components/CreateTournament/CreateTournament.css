@@ -7,9 +7,15 @@
 
 .make-team{
   width: 40%;
+  margin-top: 30px;
 }
 
 article{
   width: 40%;
   height: auto;
+}
+
+article span{
+  color: #F89633;
+  text-transform: uppercase;
 }

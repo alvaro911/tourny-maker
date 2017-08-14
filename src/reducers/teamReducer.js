@@ -1,15 +1,15 @@
 const initialState = {
-  teams: []
-}
+  teams: [],
+};
 
-export default(state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'GET_TEAM':
       return {
         ...state,
-        teams: action.payload
-      }
+        teams: action.payload,
+      };
     default:
-      return state
+      return state;
   }
-}
+};

@@ -71,7 +71,6 @@ button{
   background-color: #F89633;
   cursor: pointer;
   color: white;
-  width: 12%;
   transition: all .25s ease;
 }
 

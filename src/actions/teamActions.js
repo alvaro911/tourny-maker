@@ -6,8 +6,8 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
-const CREATE_TEAM = 'CREATE_TEAM'
-const GET_TEAM = 'GET_TEAM'
+const CREATE_TEAM = 'CREATE_TEAM';
+const GET_TEAM = 'GET_TEAM';
 
 const createTeam = (data, tournamentId) => ({
   type: CREATE_TEAM,
@@ -17,8 +17,8 @@ const createTeam = (data, tournamentId) => ({
 
 const getTeam = data => ({
   type: GET_TEAM,
-  payload: data
-})
+  payload: data,
+});
 
 export const createTeamAction = (
   userInput,
@@ -33,9 +33,9 @@ export const createTeamAction = (
 
 export const getTeamByUserId = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/v1/teams/user/${id}`)
-    return dispatch(getTeam(res.data))
+    const res = await axios.get(`/api/v1/teams/user/${id}`);
+    return dispatch(getTeam(res.data));
   } catch (e) {
-    console.log({e});
+    console.log({ e });
   }
-}
+};

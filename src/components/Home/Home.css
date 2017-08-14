@@ -65,3 +65,24 @@
 h4{
   text-align: center;
 }
+
+.intro-paragraph{
+  width: 40%;
+  height: auto;
+  margin:10em auto;
+}
+
+.intro-paragraph h3{
+  line-height: 1.6;
+}
+
+.user-btns{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-btns button{
+  width:20%;
+  margin: 20px 40% 0;
+}

@@ -48,24 +48,24 @@ class UserUpdate extends Component {
     return (
       <div className="update-user">
         <form onSubmit={this.onSubmit}>
-            <label htmlFor="firstName">Name</label>
-            <input
-              onChange={this.updateInfo}
-              name="firstName"
-              value={this.state.firstName}
-            />
-            <label htmlFor="lastName">Last name</label>
-            <input
-              onChange={this.updateInfo}
-              name="lastName"
-              value={this.state.lastName}
-            />
-            <label htmlFor="userName">Username</label>
-            <input
-              onChange={this.updateInfo}
-              name="userName"
-              value={this.state.userName}
-            />
+          <label htmlFor="firstName">Name</label>
+          <input
+            onChange={this.updateInfo}
+            name="firstName"
+            value={this.state.firstName}
+          />
+          <label htmlFor="lastName">Last name</label>
+          <input
+            onChange={this.updateInfo}
+            name="lastName"
+            value={this.state.lastName}
+          />
+          <label htmlFor="userName">Username</label>
+          <input
+            onChange={this.updateInfo}
+            name="userName"
+            value={this.state.userName}
+          />
 
           <button type="submit">Submit</button>
         </form>

@@ -17,6 +17,7 @@ class CreateTournament extends Component {
       address: '',
       city: '',
       zipCode: 0,
+      formData: true
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.tournamentInfo = this.tournamentInfo.bind(this);
@@ -43,10 +44,24 @@ class CreateTournament extends Component {
       <div className="create-tournament">
         <article>
           <h2 className="Source-Sans">Instructions</h2>
-          <p>Ready to start a new excitement and riveting championship? We can't wait to see it in action either! In order to get this started we you need to fill out this application. <span>Note that all of the fields are required</span>, once you submit your form, go to the dashboard to keep an eye the teams registered, once you have a number of teams that you need click the create calendar button, this will create a round robin (every team will play each other once) type league where the team with more points wins.</p>
+          <p>
+            Ready to start a new excitement and riveting
+            tournament? We can't wait to see it in action
+            either! In order to get this started we you need
+            to fill out this application.{' '}
+            <span>
+              Note that all of the fields are required
+            </span>, once you submit your form, go to the
+            <span> tournament dashboard</span> to keep an eye the teams registered,
+            once you have a number of teams that you need
+            click the <span>create calendar button</span>, this will
+            create a round robin (every team will play each
+            other once) type league where the team with more
+            points wins.
+          </p>
         </article>
         <div className="make-team">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit} disabled={this.state.formData}>
             <label htmlFor="tournamentName">
               Tournament name
             </label>
@@ -127,7 +142,7 @@ class CreateTournament extends Component {
               required
             />
 
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={this.state.formData}>Submit</button>
           </form>
         </div>
       </div>

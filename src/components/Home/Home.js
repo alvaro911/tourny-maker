@@ -7,7 +7,7 @@ import './Home.css';
 function Home({ user }) {
   if (!user.isLogged) {
     return (
-      <div className="intro paragraph">
+      <div className="intro-paragraph">
         <h1>Welcome to TOURNY MAKER</h1>
         <h3>
           The application to create/manage tournaments and
@@ -33,7 +33,6 @@ function Home({ user }) {
             <Link to="/create-tournament">
               <div className="home-nav-card-1">
                 <div className="home-nav-image">
-
                   <h4>Create a tournament</h4>
                 </div>
               </div>
@@ -41,30 +40,25 @@ function Home({ user }) {
           <Link to="/search-tournament">
             <div className="home-nav-card-2">
               <div className="home-nav-image">
-
                 <h4>Look for tournament</h4>
               </div>
             </div>
           </Link>
-          {(user.role === 'CREATOR')
-            ?
-            <Link to="/me/tournaments">
-              <div className="home-nav-card-3">
-                <div className="home-nav-image">
-
-                  <h4>Dashboard</h4>
+          {user.role === 'CREATOR'
+            ? <Link to="/me/tournaments">
+                <div className="home-nav-card-3">
+                  <div className="home-nav-image">
+                    <h4>Tournament Dashboard</h4>
+                  </div>
                 </div>
-              </div>
-            </Link>
-            :
-            <Link to="/me/teams">
-              <div className="home-nav-card-3">
-                <div>
-                  <h4>Team Dashboard</h4>
+              </Link>
+            : <Link to="/me/teams">
+                <div className="home-nav-card-3">
+                  <div>
+                    <h4>Team Dashboard</h4>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          }
+              </Link>}
         </div>
       </div>
     </div>

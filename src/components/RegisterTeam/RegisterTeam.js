@@ -106,10 +106,18 @@ class RegisterTeam extends Component {
       <div className="register-team">
         <article>
           <h2 className="Source-Sans">Instructions</h2>
-            You're about to create the team that has the potential to rule over everyone in this league. Are you ready to bring them down? Perfect! <br />
-            In order to get you started on the road towards domination, you need to fill out this form. Note that all the fields are required.
-            Once your team is created and the tournament has started look in your dashboard to see how your team is performing.<br />
-            <button onClick={() => this.goBack()}>back</button>
+          You're about to create the team that has the
+          potential to rule over everyone in this league.
+          Are you ready to bring them down? Perfect! <br />
+          In order to get you started on the road towards
+          domination, you need to fill out this form. Note
+          that all the fields are required. Once your team
+          is created and the tournament has started look in
+          your dashboard to see how your team is performing.<br
+          />
+          <button onClick={() => this.goBack()}>
+            back
+          </button>
         </article>
         <form
           className="register-form"

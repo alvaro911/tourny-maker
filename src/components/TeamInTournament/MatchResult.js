@@ -16,17 +16,19 @@ class MatchResult extends Component {
 
   async componentDidMount() {
     if (!this.props.m) {
-      await this.props.getMatchById(this.props.match.params.id);
+      await this.props.getMatchById(
+        this.props.match.params.id,
+      );
     }
     this.setState({
       goalsA: this.props.m.goalsA,
-      goalsB: this.props.m.goalsB
-    })
+      goalsB: this.props.m.goalsB,
+    });
   }
 
   async submitResult(e) {
     e.preventDefault();
-    const path = this.props.m.tournamentId
+    const path = this.props.m.tournamentId;
     try {
       this.setState({
         fullTime: true,
@@ -36,7 +38,7 @@ class MatchResult extends Component {
         this.props.match.params.id,
         this.state,
       );
-      this.props.history.goBack(`/tournament/${path}`)
+      this.props.history.goBack(`/tournament/${path}`);
     } catch (err) {
       throw err;
     }
@@ -49,7 +51,8 @@ class MatchResult extends Component {
   }
 
   goBack() {
-    window.history.back();
+    const path = this.props.m.tournamentId
+    this.history.props.goBack(`/tournament/${path}`)
   }
 
   render() {
