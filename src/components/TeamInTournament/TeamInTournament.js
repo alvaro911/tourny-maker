@@ -31,8 +31,13 @@ class TeamInTournament extends Component {
       );
     }
 
-    const teams = this.props.tourny.pointsArr.map(team =>
+    const teams = this.props.tourny.pointsArr.map((team, i) =>
       (<div key={team.teamId} className="team-stats">
+        <div className="team-pos">
+          <h3>
+            {i + 1}
+          </h3>
+        </div>
         <div className="team-name">
           <h3>
             {team.teamName}
@@ -120,6 +125,12 @@ class TeamInTournament extends Component {
         <div className="tournament-stats">
           <div className="teams-list stats">
             <h2>Leaderboard</h2>
+            <div className="team-stats banner">
+              <div className="team-pos">POS</div>
+              <div className="team-name">TEAMS</div>
+              <div className="team-goals">GOALS</div>
+              <div className="team-points">POINTS</div>
+            </div>
             {teams}
           </div>
           <div className="stats">

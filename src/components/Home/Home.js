@@ -33,14 +33,14 @@ function Home({ user }) {
             <Link to="/create-tournament">
               <div className="home-nav-card-1">
                 <div className="home-nav-image">
-                  <h4>Create a tournament</h4>
+                  <h4>Create a Tournament</h4>
                 </div>
               </div>
             </Link>}
           <Link to="/search-tournament">
             <div className="home-nav-card-2">
               <div className="home-nav-image">
-                <h4>Look for tournament</h4>
+                <h4>Look for Tournament</h4>
               </div>
             </div>
           </Link>

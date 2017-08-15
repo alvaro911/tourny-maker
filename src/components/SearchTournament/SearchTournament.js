@@ -32,7 +32,7 @@ class SearchTournament extends Component {
               </p>
               <h5>
                 Start Date:{' '}
-                {new Date(item.startDate).toLocaleString()}
+                {new Date(item.startDate).toUTCString()}
               </h5>
               <h5>
                 Created by: {item.user.userName}

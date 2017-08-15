@@ -28,5 +28,5 @@
     "eject": "react-scripts eject",
     "prettier": "prettier --single-quote --print-width 60 --trailing-comma all --write 'src/**/*.js'"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "https://tourny-maker-server.herokuapp.com"
 }

@@ -41,13 +41,23 @@
   display: flex;
 }
 
-.team-name{
-  width: 70%;
+.banner{
+  color: rgb(189, 158, 26);
+  margin-bottm: 1em;
+}
+
+.team-pos{
+  width: 5%;
   padding-left: 1em;
 }
 
+.team-name{
+  width: 55%;
+  padding-left: 3em;
+}
+
 .team-goals, .team-points{
-  width: 15%;
+  width: 20%;
   padding-right: 1em;
   text-align: right;
 }
