@@ -8,6 +8,11 @@ article{
   width: 40%;
 }
 
+article span{
+  text-transform: uppercase;
+  color: #F89633;
+}
+
 .register-form{
   width: 40%;
   display: flex;

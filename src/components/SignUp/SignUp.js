@@ -30,6 +30,10 @@ class SignUp extends Component {
     }
   }
 
+  checkPassword(pswrd){
+    return !!pswrd.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=?&])[A-Za-z\d$@$!%* #+=?&]{3,}$/);
+  }
+
   userInfo(e) {
     this.setState({
       [e.target.name]: e.target.value,

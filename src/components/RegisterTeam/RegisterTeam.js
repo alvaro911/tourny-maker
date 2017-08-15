@@ -110,10 +110,10 @@ class RegisterTeam extends Component {
           potential to rule over everyone in this league.
           Are you ready to bring them down? Perfect! <br />
           In order to get you started on the road towards
-          domination, you need to fill out this form. Note
-          that all the fields are required. Once your team
+          domination, you need to fill out this form. <span>Note
+          that all the fields are required</span>. Once your team
           is created and the tournament has started look in
-          your dashboard to see how your team is performing.<br
+          your <span>Team Dashboard</span> to see how your team is performing.<br
           />
           <button onClick={() => this.goBack()}>
             back
