@@ -51,9 +51,10 @@ class CreateTournament extends Component {
             <span>
               Note that all of the fields are required
             </span>, once you submit your form, go to the
-            <span> tournament dashboard</span> to keep an eye the teams registered,
-            once you have a number of teams that you need
-            click the <span>create calendar button</span>, this will
+            <span> tournament dashboard</span> to keep an
+            eye the teams registered, once you have a number
+            of teams that you need click the{' '}
+            <span>create calendar button</span>, this will
             create a round robin (every team will play each
             other once) type league where the team with more
             points wins.

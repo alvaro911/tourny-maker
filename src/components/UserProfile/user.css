@@ -32,16 +32,10 @@
   width: 100%;
   height: auto;
   display: flex;
-  padding: 3em 2em;
+  padding: 2em 2em;
   align-items: center;
-}
-
-.tourny h2{
-  cursor: pointer;
-}
-
-.tourny h2:hover{
-  color: #F89633;
+  background-color: #342B3A;
+  margin: 20px 0 10px;
 }
 
 .tourny-number{
@@ -61,4 +55,9 @@
 
 .tourny-actions button{
   width: 100%
+}
+
+.no-teams{
+  color: #826d93;
+  margin-top: 6em;
 }

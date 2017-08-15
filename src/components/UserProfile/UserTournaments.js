@@ -25,6 +25,13 @@ class UserTournaments extends Component {
   }
 
   render() {
+    if (this.props.userTournyArr.length === 0) {
+      return (
+        <h1 className="Source-Sans no-teams">
+          You don't have tournaments yet
+        </h1>
+      );
+    }
     const tournaments = this.props.userTournyArr.map(
       (item, i) =>
         <div className="tourny" key={item._id}>

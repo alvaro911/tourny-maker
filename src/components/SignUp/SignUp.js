@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { signUp } from '../../actions/userActions';
 import './SignUp.css';
 
-const passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
+const passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
 class SignUp extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -19,7 +18,7 @@ class SignUp extends Component {
       confirmPassword: '',
       role: 'PLAYER',
       showError: false,
-      errorMsg: ''
+      errorMsg: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.userInfo = this.userInfo.bind(this);
@@ -27,22 +26,28 @@ class SignUp extends Component {
 
   async onSubmit(e) {
     e.preventDefault();
-    if(!this.checkPassword(this.state.password) && this.state.password.length < 6){
+    if (
+      !this.checkPassword(this.state.password) &&
+      this.state.password.length < 6
+    ) {
       this.setState({
         showError: true,
-        errorMsg: 'Password should be at least be 6 characters long, have one capital letter and one number'
-      })
-    } else if(!this.isValidEmail(this.state.email)) {
+        errorMsg:
+          'Password should be at least be 6 characters long, have one capital letter and one number',
+      });
+    } else if (!this.isValidEmail(this.state.email)) {
       this.setState({
         showError: true,
-        errorMsg: 'Not a valid e-mail address'
-      })
-    } else if(this.state.password !== this.state.confirmPassword){
+        errorMsg: 'Not a valid e-mail address',
+      });
+    } else if (
+      this.state.password !== this.state.confirmPassword
+    ) {
       this.setState({
         showError: true,
-        errorMsg: 'Passwords don\'t match'
-      })
-    } else{
+        errorMsg: "Passwords don't match",
+      });
+    } else {
       try {
         this.props.dispatch(signUp(this.state));
         this.props.history.push('/');
@@ -52,13 +57,13 @@ class SignUp extends Component {
     }
   }
 
-  checkPassword(pswrd){
-    return pswrd.match(passwordReg)
+  checkPassword(pswrd) {
+    return pswrd.match(passwordReg);
   }
 
-  isValidEmail(email){
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return re.test(email)
+  isValidEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
   }
 
   userInfo(e) {
@@ -76,15 +81,13 @@ class SignUp extends Component {
   render() {
     return (
       <div className="login">
-        {
-          (this.state.showError)
-          ?
-          <div className="passwordErr">
-            <h3>{this.state.errorMsg}</h3>
-          </div>
-          :
-          null
-        }
+        {this.state.showError
+          ? <div className="passwordErr">
+              <h3>
+                {this.state.errorMsg}
+              </h3>
+            </div>
+          : null}
         <div>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="firstName">Name</label>

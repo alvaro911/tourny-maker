@@ -12,10 +12,10 @@ class TeamInTournament extends Component {
   }
 
   goBack() {
-    if(localStorage.getItem('role') === 'CREATOR'){
+    if (localStorage.getItem('role') === 'CREATOR') {
       this.props.history.goBack('/me/tournaments');
     }
-    this.props.history.goBack('/me/teams')
+    this.props.history.goBack('/me/teams');
   }
 
   goToMatch(id) {
@@ -31,33 +31,34 @@ class TeamInTournament extends Component {
       );
     }
 
-    const teams = this.props.tourny.pointsArr.map((team, i) =>
-      (<div key={team.teamId} className="team-stats">
-        <div className="team-pos">
-          <h3>
-            {i + 1}
-          </h3>
-        </div>
-        <div className="team-name">
-          <h3>
-            {team.teamName}
-          </h3>
-        </div>
-        <div className="team-goals">
-          <h3>
-            {team.totalGoals}
-          </h3>
-        </div>
-        <div className="team-points">
-          <h3>
-            {team.totalPoints}
-          </h3>
-        </div>
-      </div>)
+    const teams = this.props.tourny.pointsArr.map(
+      (team, i) =>
+        <div key={team.teamId} className="team-stats">
+          <div className="team-pos">
+            <h3>
+              {i + 1}
+            </h3>
+          </div>
+          <div className="team-name">
+            <h3>
+              {team.teamName}
+            </h3>
+          </div>
+          <div className="team-goals">
+            <h3>
+              {team.totalGoals}
+            </h3>
+          </div>
+          <div className="team-points">
+            <h3>
+              {team.totalPoints}
+            </h3>
+          </div>
+        </div>,
     );
 
     const results = this.props.tourny.matches.map(result =>
-      (<div key={result._id} className="match">
+      <div key={result._id} className="match">
         <p>
           {result.teamA.teamName} {result.goalsA} -{' '}
           {result.goalsB} {result.teamB.teamName}
@@ -74,7 +75,7 @@ class TeamInTournament extends Component {
               Update
             </button>
           : null}
-      </div>),
+      </div>,
     );
 
     const matches = this.props.tourny.matches.map(

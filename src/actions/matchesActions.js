@@ -6,7 +6,8 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
-const BASE_URL = 'https://tourny-maker-server.herokuapp.com'
+const BASE_URL =
+  'https://tourny-maker-server.herokuapp.com';
 
 const CREATE_MATCHES = 'CREATE_MATCHES';
 const GET_MATCHES = 'GET_MATCHES';

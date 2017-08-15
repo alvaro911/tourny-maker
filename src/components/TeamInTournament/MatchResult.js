@@ -51,8 +51,8 @@ class MatchResult extends Component {
   }
 
   goBack() {
-    const path = this.props.m.tournamentId
-    this.history.props.goBack(`/tournament/${path}`)
+    const path = this.props.m.tournamentId;
+    this.history.props.goBack(`/tournament/${path}`);
   }
 
   render() {

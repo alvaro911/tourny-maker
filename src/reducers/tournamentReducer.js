@@ -31,11 +31,13 @@ export default (state = initialState, action) => {
       };
 
     case 'FETCH_TOURNAMENT': {
-      const tournys = state.tournaments.filter(t => t._id !== action.payload._id);
+      const tournys = state.tournaments.filter(
+        t => t._id !== action.payload._id,
+      );
 
       return {
         ...state,
-        tournaments: [...tournys, action.payload ],
+        tournaments: [...tournys, action.payload],
       };
     }
     case 'CREATE_TOURNAMENT':

@@ -6,7 +6,8 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
-const BASE_URL = 'https://tourny-maker-server.herokuapp.com'
+const BASE_URL =
+  'https://tourny-maker-server.herokuapp.com';
 
 const CREATE_TOURNAMENT = 'CREATE_TOURNAMENT';
 const UPDATE_TOURNAMENT = 'UPDATE_TOURNAMENT';
@@ -60,7 +61,9 @@ export const createTournamentAction = args => async dispatch => {
 
 export const getTournamentsActions = () => async dispatch => {
   try {
-    const res = await axios.get(`${BASE_URL}/api/v1/tournaments/`);
+    const res = await axios.get(
+      `${BASE_URL}/api/v1/tournaments/`,
+    );
     return dispatch(getAll(res.data));
   } catch (e) {
     console.log({ e });
@@ -68,7 +71,9 @@ export const getTournamentsActions = () => async dispatch => {
 };
 
 export const getTournamentById = id => async dispatch => {
-  const res = await axios.get(`${BASE_URL}/api/v1/tournaments/${id}`);
+  const res = await axios.get(
+    `${BASE_URL}/api/v1/tournaments/${id}`,
+  );
   return dispatch(getOne(res.data));
 };
 
@@ -85,7 +90,9 @@ export const getTournamentsByUserId = userId => async dispatch => {
 
 export const deleteTournamentAction = id => async dispatch => {
   try {
-    await axios.delete(`${BASE_URL}/api/v1/tournaments/${id}`);
+    await axios.delete(
+      `${BASE_URL}/api/v1/tournaments/${id}`,
+    );
     return dispatch(deleteTourny(id));
   } catch (e) {
     console.log({ e });

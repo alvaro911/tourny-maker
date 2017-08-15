@@ -37,13 +37,14 @@ function Home({ user }) {
                 </div>
               </div>
             </Link>}
-          <Link to="/search-tournament">
-            <div className="home-nav-card-2">
-              <div className="home-nav-image">
-                <h4>Look for Tournament</h4>
+          {user.role === 'PLAYER' &&
+            <Link to="/search-tournament">
+              <div className="home-nav-card-2">
+                <div className="home-nav-image">
+                  <h4>Look for Tournament</h4>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>}
           {user.role === 'CREATOR'
             ? <Link to="/me/tournaments">
                 <div className="home-nav-card-3">

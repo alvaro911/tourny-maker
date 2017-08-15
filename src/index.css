@@ -78,6 +78,18 @@ button:hover{
   background-color: #18B0B7;
 }
 
+footer{
+  width: 100%;
+  padding: .25em 1em;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 10px;
+}
+
+footer a{
+  color: #F89633;
+}
+
 .Source-Sans{
   font-family: 'Source Sans Pro';
   text-transform: uppercase;
