@@ -17,7 +17,6 @@ class CreateTournament extends Component {
       address: '',
       city: '',
       zipCode: 0,
-      formData: true
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.tournamentInfo = this.tournamentInfo.bind(this);
@@ -61,7 +60,7 @@ class CreateTournament extends Component {
           </p>
         </article>
         <div className="make-team">
-          <form onSubmit={this.onSubmit} disabled={this.state.formData}>
+          <form onSubmit={this.onSubmit}>
             <label htmlFor="tournamentName">
               Tournament name
             </label>
@@ -142,7 +141,7 @@ class CreateTournament extends Component {
               required
             />
 
-            <button type="submit" disabled={this.state.formData}>Submit</button>
+            <button type="submit">Submit</button>
           </form>
         </div>
       </div>
