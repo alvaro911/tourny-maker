@@ -6,6 +6,8 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
+const BASE_URL = 'https://tourny-maker-server.herokuapp.com'
+
 const CREATE_MATCHES = 'CREATE_MATCHES';
 const GET_MATCHES = 'GET_MATCHES';
 const GET_MATCH_BY_ID = 'GET_MATCH_BY_ID';
@@ -34,7 +36,7 @@ const updateRes = data => ({
 export const createMatchesActions = id => async dispatch => {
   try {
     const res = await axios.post(
-      `/api/v1/tournaments/${id}`,
+      `${BASE_URL}/api/v1/tournaments/${id}`,
     );
     return dispatch(create(res.data));
   } catch (e) {
@@ -45,7 +47,7 @@ export const createMatchesActions = id => async dispatch => {
 export const getMatchesAction = id => async dispatch => {
   try {
     const res = await axios.get(
-      `/api/v1/matches/tournament/${id}`,
+      `${BASE_URL}/api/v1/matches/tournament/${id}`,
     );
     return dispatch(get(res.data));
   } catch (e) {
@@ -56,7 +58,7 @@ export const getMatchesAction = id => async dispatch => {
 export const getMatchById = id => async dispatch => {
   try {
     const res = await axios.get(
-      `/api/v1/matches/match/${id}`,
+      `${BASE_URL}/api/v1/matches/match/${id}`,
     );
     return dispatch(getOne(res.data));
   } catch (e) {
@@ -67,7 +69,7 @@ export const getMatchById = id => async dispatch => {
 export const finalRes = (id, args) => async dispatch => {
   try {
     const res = await axios.patch(
-      `/api/v1/matches/${id}`,
+      `${BASE_URL}/api/v1/matches/${id}`,
       args,
     );
     return dispatch(updateRes(res.data));

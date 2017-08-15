@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 const LOGGING_OUT = 'LOGGING_OUT';
+const BASE_URL = 'https://tourny-maker-server.herokuapp.com'
 
 const authenticate = data => ({
   type: AUTHENTICATE_USER,
@@ -47,7 +48,7 @@ export function checkIfAuth() {
 
 export const loginAction = userInput => async dispatch => {
   const res = await axios.post(
-    '/api/v1/users/login',
+    `${BASE_URL}/api/v1/users/login`,
     userInput,
   );
   localStorage.setItem('token', res.data.token);
@@ -62,7 +63,7 @@ export const loginAction = userInput => async dispatch => {
 
 export const signUp = userInput => async dispatch => {
   const res = await axios.post(
-    '/api/v1/users/signup',
+    `${BASE_URL}/api/v1/users/signup`,
     userInput,
   );
   localStorage.setItem('token', res.data.token);

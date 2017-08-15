@@ -6,6 +6,8 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
+const BASE_URL = 'https://tourny-maker-server.herokuapp.com'
+
 const CREATE_TOURNAMENT = 'CREATE_TOURNAMENT';
 const UPDATE_TOURNAMENT = 'UPDATE_TOURNAMENT';
 const DELETE_TOURNAMENT = 'DELETE_TOURNAMENT';
@@ -47,7 +49,7 @@ const deleteTourny = id => ({
 export const createTournamentAction = args => async dispatch => {
   try {
     const res = await axios.post(
-      '/api/v1/tournaments/createTournament',
+      `${BASE_URL}/api/v1/tournaments/createTournament`,
       args,
     );
     return dispatch(create(res.data));
@@ -58,7 +60,7 @@ export const createTournamentAction = args => async dispatch => {
 
 export const getTournamentsActions = () => async dispatch => {
   try {
-    const res = await axios.get('/api/v1/tournaments/');
+    const res = await axios.get(`${BASE_URL}/api/v1/tournaments/`);
     return dispatch(getAll(res.data));
   } catch (e) {
     console.log({ e });
@@ -66,14 +68,14 @@ export const getTournamentsActions = () => async dispatch => {
 };
 
 export const getTournamentById = id => async dispatch => {
-  const res = await axios.get(`/api/v1/tournaments/${id}`);
+  const res = await axios.get(`${BASE_URL}/api/v1/tournaments/${id}`);
   return dispatch(getOne(res.data));
 };
 
 export const getTournamentsByUserId = userId => async dispatch => {
   try {
     const res = await axios.get(
-      `/api/v1/tournaments/tournamentId/${userId}`,
+      `${BASE_URL}/api/v1/tournaments/tournamentId/${userId}`,
     );
     return dispatch(getTournyById(res.data));
   } catch (e) {
@@ -83,7 +85,7 @@ export const getTournamentsByUserId = userId => async dispatch => {
 
 export const deleteTournamentAction = id => async dispatch => {
   try {
-    await axios.delete(`/api/v1/tournaments/${id}`);
+    await axios.delete(`${BASE_URL}/api/v1/tournaments/${id}`);
     return dispatch(deleteTourny(id));
   } catch (e) {
     console.log({ e });
@@ -93,7 +95,7 @@ export const deleteTournamentAction = id => async dispatch => {
 export const updateTournament = id => async dispatch => {
   try {
     const res = await axios.patch(
-      `/api/v1/tournaments/${id}`,
+      `${BASE_URL}/api/v1/tournaments/${id}`,
     );
     return dispatch(update(res.data));
   } catch (e) {

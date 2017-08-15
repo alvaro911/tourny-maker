@@ -6,6 +6,8 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
+const BASE_URL = 'https://tourny-maker-server.herokuapp.com'
+
 const CREATE_TEAM = 'CREATE_TEAM';
 const GET_TEAM = 'GET_TEAM';
 
@@ -24,7 +26,7 @@ export const createTeamAction = (
   userInput,
   tournamentId,
 ) => async dispatch => {
-  const res = await axios.post('/api/v1/teams/createTeam', {
+  const res = await axios.post(`${BASE_URL}/api/v1/teams/createTeam`, {
     ...userInput,
     tournament: tournamentId,
   });
@@ -33,7 +35,7 @@ export const createTeamAction = (
 
 export const getTeamByUserId = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/v1/teams/user/${id}`);
+    const res = await axios.get(`${BASE_URL}/api/v1/teams/user/${id}`);
     return dispatch(getTeam(res.data));
   } catch (e) {
     console.log({ e });
