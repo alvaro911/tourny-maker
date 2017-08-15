@@ -12,7 +12,7 @@ function Home({ user }) {
         <h3>
           The application to create/manage tournaments and
           teams easily, so what are you waiting for? Sign up
-          or sign in and start creating champions.
+          or sign in and start making champions.
         </h3>
         <div className="user-btns">
           <Link to="/sign-up">
