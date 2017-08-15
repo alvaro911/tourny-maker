@@ -81,7 +81,7 @@ export const updateAction = (
   userInput,
 ) => async dispatch => {
   const res = await axios.patch(
-    `/api/v1/users/me/${id}`,
+    `${BASE_URL}/api/v1/users/me/${id}`,
     userInput,
   );
   localStorage.setItem('userName', res.data.userName);

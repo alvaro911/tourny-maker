@@ -88,7 +88,7 @@ class SignUp extends Component {
               value={this.state.role}
               onChange={e => this.roleChange(e)}
             >
-              <option value="CREATOR">Ceator</option>
+              <option value="CREATOR">Creator</option>
               <option value="PLAYER">Player</option>
             </select>
             <label htmlFor="password">Password</label>
