@@ -37,6 +37,11 @@ class App extends Component {
             path="/tournament-id/:id"
             component={TeamInTournament}
           />
+          <Route
+            exact
+            path="/me/teams"
+            component={UserTeam}
+          />
           <main>
             <Route exact path="/login" component={Login} />
             <Route
@@ -73,11 +78,6 @@ class App extends Component {
               exact
               path="/me/tournaments"
               component={UserTournaments}
-            />
-            <Route
-              exact
-              path="/me/teams"
-              component={UserTeam}
             />
             <Route
               exact

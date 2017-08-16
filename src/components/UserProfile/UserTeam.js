@@ -14,26 +14,33 @@ class UserTeam extends Component {
   }
 
   render() {
-    if (!this.props.team) {
+    if (!this.props.team.teams) {
       return <h1>Loading...</h1>;
     }
-    const teamsInfo = this.props.team.map((teamInfo, i) =>
-      <div key={teamInfo._id} className="teamStats">
-        <h1>
-          {teamInfo.teamName}
-        </h1>
-        <button
-          onClick={this.toTournament.bind(
-            this,
-            teamInfo.tournament,
-          )}
-        >
-          Go to tournament
-        </button>
+
+    const teamsInfo = this.props.team.teams.map(teamInfo =>
+      <div key={teamInfo._id} className="my-team-info">
+        <div className="team-name">
+          <h2 className="Source-Sans">
+            {teamInfo.teamName}
+          </h2>
+        </div>
+        <div className="team-tournament">
+          <button
+            className="team-btn"
+            onClick={this.toTournament.bind(
+              this,
+              teamInfo.tournament,
+            )}
+            >
+            Go to tournament
+          </button>
+        </div>
       </div>,
     );
+    
     return (
-      <div>
+      <div className="my-team-stats">
         {teamsInfo}
       </div>
     );

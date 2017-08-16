@@ -61,3 +61,29 @@
   color: #826d93;
   margin-top: 6em;
 }
+
+.my-team-stats{
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-team-info{
+  width: 45%;
+  height: auto;
+  background-color: #342B3A;
+  margin: 10px 0;
+}
+
+.my-team-info .team-name{
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  font-size: 42px;
+  margin: 20px 0 10px;
+}
+
+.my-team-info .team-btn{
+  margin: 0 37.5% 41px;
+}
