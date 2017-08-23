@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { signUp } from '../../actions/userActions';
 import './SignUp.css';
 
-const passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-
 class SignUp extends Component {
   constructor() {
     super();
@@ -26,10 +24,7 @@ class SignUp extends Component {
 
   async onSubmit(e) {
     e.preventDefault();
-    if (
-      !this.checkPassword(this.state.password) &&
-      this.state.password.length < 6
-    ) {
+    if (!this.checkPassword(this.state.password)) {
       this.setState({
         showError: true,
         errorMsg:
@@ -58,7 +53,8 @@ class SignUp extends Component {
   }
 
   checkPassword(pswrd) {
-    return pswrd.match(passwordReg);
+    const passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    return passwordReg.test(pswrd);
   }
 
   isValidEmail(email) {
