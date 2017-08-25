@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import * as actions from '../../actions';
 import './CreateTournament.css';
+import trophy from '../../img/trophy.png'
 
 class CreateTournament extends Component {
   constructor() {
@@ -17,6 +18,8 @@ class CreateTournament extends Component {
       address: '',
       city: '',
       zipCode: 0,
+      showError: false,
+      errorMsg: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.tournamentInfo = this.tournamentInfo.bind(this);
@@ -25,8 +28,16 @@ class CreateTournament extends Component {
   async onSubmit(e) {
     e.preventDefault();
     try {
-      await this.props.createTournamentAction(this.state);
-      this.props.history.push('/');
+      if(this.state.minimumNumPlayers > 23){
+        this.setState({
+          showError: true,
+          errorMsg: 'You\'re trying to register too many players, you can only have up to 23, you don\'t want to type that many names do you?'
+        })
+      }
+      else{
+        await this.props.createTournamentAction(this.state);
+        this.props.history.push('/');
+      }
     } catch (err) {
       throw err;
     }
@@ -59,8 +70,18 @@ class CreateTournament extends Component {
             other once) type league where the team with more
             points wins.
           </p>
+          <div className="trophy">
+            <img src={trophy} />
+          </div>
         </article>
         <div className="make-team">
+          {this.state.showError
+            ?
+            <div className="passwordErr">
+              {this.state.errorMsg}
+            </div>
+            : null
+          }
           <form onSubmit={this.onSubmit}>
             <label htmlFor="tournamentName">
               Tournament name

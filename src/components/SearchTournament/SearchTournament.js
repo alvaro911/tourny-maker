@@ -20,7 +20,7 @@ class SearchTournament extends Component {
       item =>
         item.teams.length !== item.numberOfTeams
           ? <div key={item._id} className="tournament-card">
-              <h3>
+              <h3 className="Source-Sans">
                 {item.tournamentName}
               </h3>
               <p>Teams in the league</p>

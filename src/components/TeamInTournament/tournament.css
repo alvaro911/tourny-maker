@@ -1,10 +1,13 @@
 .tournament{
   width: 100%;
   height: auto;
-  padding: 2em 1em;
+  padding: 0.7em 5%;
+  display: -ms-flexbox;
   display: flex;
-  background-color: #342B3A;
+  background-color: #27272C;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  align-items: center;
 }
 
 .tournament-nav{
@@ -23,9 +26,17 @@
   justify-content: space-between;
 }
 
+.tournament-stats main{
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .stats{
   width: 32%;
-  background-color: #342B3A;
+  background-color: #27272C;
+  border: 3px solid #27272C;
+  padding-bottom: 1em;
 }
 
 .stats h2{
@@ -33,7 +44,7 @@
 }
 
 .stats:hover{
-  background-color: #673787;
+  border-color: #D56327;
 }
 
 .team-stats{
@@ -42,7 +53,7 @@
 }
 
 .banner{
-  color: rgb(189, 158, 26);
+  color: #D56327;
   margin-bottm: 1em;
 }
 
@@ -63,8 +74,8 @@
 }
 
 .team-goals{
-  border-right: 1px solid rgb(189, 158, 26);
-  border-left: 1px solid rgb(189, 158, 26);
+  border-right: 1px solid #D56327;
+  border-left: 1px solid #D56327;
 }
 
 .week{
@@ -75,7 +86,7 @@
 }
 
 .week:hover{
-  background-color: rgb(189, 158, 26);
+  background-color: #D56327;
 }
 
 .match{

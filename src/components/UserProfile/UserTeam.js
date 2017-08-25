@@ -13,6 +13,10 @@ class UserTeam extends Component {
     this.props.history.push(`/tournament-id/${id}`);
   }
 
+  toSearchTournament(){
+    this.props.history.push('/search-tournament');
+  }
+
   render() {
     if (!this.props.team.teams) {
       return <h1>Loading...</h1>;
@@ -38,10 +42,26 @@ class UserTeam extends Component {
         </div>
       </div>,
     );
-    
+
     return (
       <div className="my-team-stats">
-        {teamsInfo}
+        {(teamsInfo.length !== 0)
+          ?
+          <main>
+            {teamsInfo}
+          </main>
+          :
+          <div className="no-team-wrapper">
+            <div className="no-teams">
+              <h1>You don't have registered teams yet</h1>
+              <article>
+                So what are you waiting for?
+                Let's find a tournament for you and your team to conquer it!
+              </article>
+              <button onClick={() => this.toSearchTournament()}>Search for tournament</button>
+            </div>
+          </div>
+        }
       </div>
     );
   }

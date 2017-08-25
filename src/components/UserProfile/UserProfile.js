@@ -11,16 +11,16 @@ class UserProfile extends Component {
         <h1 className="Source-Sans">User profile</h1>
         <div className="userInfo">
           <h2>
-            <b>Username</b> {this.props.user}
+            <b>Username:</b> {this.props.user}
           </h2>
           <h3>
-            <b>Name</b> {this.props.firstName}
+            <b>Name:</b> {this.props.firstName}
           </h3>
           <h3>
-            <b>Last name</b> {this.props.lastName}
+            <b>Last name:</b> {this.props.lastName}
           </h3>
           <h3>
-            <b>E-mail</b> {this.props.email}
+            <b>E-mail:</b> {this.props.email}
           </h3>
         </div>
         <Link to="/me/update">

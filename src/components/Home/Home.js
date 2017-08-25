@@ -7,20 +7,32 @@ import './Home.css';
 function Home({ user }) {
   if (!user.isLogged) {
     return (
-      <div className="intro-paragraph">
-        <h1>Welcome to TOURNY MAKER</h1>
-        <h3>
-          The application to create/manage tournaments and
-          teams easily, so what are you waiting for? Sign up
-          or sign in and start making champions.
-        </h3>
-        <div className="user-btns">
-          <Link to="/sign-up">
-            <button>Sign Up</button>
-          </Link>
-          <Link to="/login">
-            <button>Sign In</button>
-          </Link>
+      <div className="home">
+        <div className="intro-paragraph">
+          <h1>Welcome to <span className="Source-Sans">TOURNY MAKER</span></h1>
+          <h3>
+            The application to create/manage tournaments and
+            teams easily, so what are you waiting for? Sign up
+            or sign in and start making champions.
+          </h3>
+          <div className="user-btns">
+            <Link to="/sign-up">
+              <button>Sign Up</button>
+            </Link>
+            <Link to="/login">
+              <button>Sign In</button>
+            </Link>
+          </div>
+          <div className="for-user-demo">
+            <h4>
+              For a quick demo as a <span>CREATOR</span> enter the following email and password.<br />
+            <span>Email:</span> dorian@mail.com | <span>Password:</span> Password1
+            </h4>
+            <h4>
+              For a quick demo as a <span>PLAYER</span> enter the following email and password.<br />
+            <span>Email:</span> ray@mail.com | <span>Password:</span> Password1
+            </h4>
+          </div>
         </div>
       </div>
     );

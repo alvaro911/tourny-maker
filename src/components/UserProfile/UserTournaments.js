@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom';
 
 import * as actions from '../../actions';
 import './user.css';
+import create from '../../img/create-btn.png'
+import stats from '../../img/stats-btn.png'
+import deleteBtn from '../../img/delete-btn.png'
 
 class UserTournaments extends Component {
   componentWillMount() {
@@ -36,32 +39,30 @@ class UserTournaments extends Component {
       (item, i) =>
         <div className="tourny" key={item._id}>
           <div className="tourny-number">
-            <h2>
+            <h3>
               {i + 1}
-            </h2>
+            </h3>
           </div>
           <div className="tourny-name">
-            <h2>
-              {item.tournamentName}
-            </h2>
             <h3>
-              Teams registered: {item.teams.length}/{item.numberOfTeams}
+              {item.tournamentName}
             </h3>
-            <h4>
-              Starts:{' '}
+            <h3> {item.teams.length}/{item.numberOfTeams}
+            </h3>
+            <h3>
               {new Date(item.startDate).toLocaleString()}
-            </h4>
+            </h3>
           </div>
           <div className="tourny-actions">
             {item.teams.length === item.numberOfTeams
               ? <button
                   onClick={this.create.bind(this, item._id)}
                 >
-                  Create Matches
+                  <img src={create} />
                 </button>
               : null}
             {item.teams.length !== item.numberOfTeams
-              ? <button>Update</button>
+              ? null//  <button>Update</button>
               : null}
             <button
               onClick={this.goToTournament.bind(
@@ -69,7 +70,7 @@ class UserTournaments extends Component {
                 item._id,
               )}
             >
-              Tournament Stats
+              <img src={stats} />
             </button>
             <button
               onClick={this.deleteTourny.bind(
@@ -77,7 +78,7 @@ class UserTournaments extends Component {
                 item._id,
               )}
             >
-              Delete
+              <img src={deleteBtn} />
             </button>
           </div>
         </div>,
@@ -87,8 +88,22 @@ class UserTournaments extends Component {
       return <h1>Loading...</h1>;
     }
     return (
-      <div>
+      <div className="my-tournaments">
         <h1 className="Source-Sans">My Tournaments</h1>
+        <p>Here's a list of all of the tournaments you have created, once all of the teams you stipulated are registered hit the create button, this will start the league.</p>
+        <div className="tourny">
+          <div className="tourny-number">
+            <h4>No</h4>
+          </div>
+          <div className="tourny-name">
+            <h4>League name</h4>
+            <h4>Teams registered</h4>
+            <h4>Tournament starts</h4>
+          </div>
+          <div className="tourny-actions">
+            <h4>Actions</h4>
+          </div>
+        </div>
         {tournaments}
       </div>
     );

@@ -66,10 +66,18 @@ h4{
   text-align: center;
 }
 
+h4 span{
+  color: #D56327;
+}
+
 .intro-paragraph{
   width: 40%;
   height: auto;
   margin:10em auto;
+}
+
+.intro-paragraph span{
+  color: #D56327;
 }
 
 .intro-paragraph h3{

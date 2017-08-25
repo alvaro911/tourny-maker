@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 import './RegisterTeam.css';
+import player from '../../img/player.png'
 
 class RegisterTeam extends Component {
   constructor() {
@@ -120,6 +121,10 @@ class RegisterTeam extends Component {
           <button onClick={() => this.goBack()}>
             back
           </button>
+
+          <div className="player-pic">
+            <img src={player} />
+          </div>
         </article>
         <form
           className="register-form"

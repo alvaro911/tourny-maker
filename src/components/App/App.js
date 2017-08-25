@@ -39,8 +39,18 @@ class App extends Component {
           />
           <Route
             exact
+            path="/register-team/:id"
+            component={RegisterTeam}
+          />
+          <Route
+            exact
             path="/me/teams"
             component={UserTeam}
+          />
+          <Route
+            exact
+            path="/create-tournament"
+            component={CreateTournament}
           />
           <main>
             <Route exact path="/login" component={Login} />
@@ -51,18 +61,8 @@ class App extends Component {
             />
             <Route
               exact
-              path="/create-tournament"
-              component={CreateTournament}
-            />
-            <Route
-              exact
               path="/search-tournament"
               component={SearchTournament}
-            />
-            <Route
-              exact
-              path="/register-team/:id"
-              component={RegisterTeam}
             />
             <Route
               exact

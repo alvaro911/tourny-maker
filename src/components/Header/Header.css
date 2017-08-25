@@ -2,13 +2,16 @@ nav{
   width: 100%;
   height: auto;
   padding: 5px;
-  background-color: #b3b3b3;
+  background-color: #27272C;
   position: relative;
+  border-bottom: 3px solid #D56327;
 }
 
 nav h1{
-  font-size: 55px;
-  color: #703ca6;
+  font-size: 35px;
+  color: #D56327;
+  text-align: left;
+  margin-left: 5%;
 }
 
 ul{
@@ -21,5 +24,20 @@ ul{
 }
 
 li{
-  cursor: pointer
+  cursor: pointer;
+  color: #D56327;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+
+li a:visited{
+  color: #D56327;
+}
+
+li:hover{
+  color: #18B0B7;
+  text-decoration: underline;
 }

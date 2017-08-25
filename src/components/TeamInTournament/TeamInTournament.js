@@ -124,24 +124,26 @@ class TeamInTournament extends Component {
           </div>
         </div>
         <div className="tournament-stats">
-          <div className="teams-list stats">
-            <h2>Leaderboard</h2>
-            <div className="team-stats banner">
-              <div className="team-pos">POS</div>
-              <div className="team-name">TEAMS</div>
-              <div className="team-goals">GOALS</div>
-              <div className="team-points">POINTS</div>
+          <main>
+            <div className="teams-list stats">
+              <h2>Leaderboard</h2>
+              <div className="team-stats banner">
+                <div className="team-pos">POS</div>
+                <div className="team-name">TEAMS</div>
+                <div className="team-goals">GOALS</div>
+                <div className="team-points">POINTS</div>
+              </div>
+              {teams}
             </div>
-            {teams}
-          </div>
-          <div className="stats">
-            <h2>Upcoming matches</h2>
-            {matches}
-          </div>
-          <div className="stats">
-            <h2>Match results</h2>
-            {results}
-          </div>
+            <div className="stats">
+              <h2>Upcoming matches</h2>
+              {matches}
+            </div>
+            <div className="stats">
+              <h2>Match results</h2>
+              {results}
+            </div>
+          </main>
         </div>
       </div>
     );
