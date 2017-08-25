@@ -23,7 +23,7 @@ class Header extends Component {
     return (
       <nav>
         <Link to="/">
-          <h1 className="Source-Sans">Tourney Maker</h1>
+          <h1 className="Source-Sans">Tourny Maker</h1>
         </Link>
         {this.props.isLogged
           ? <ul>
