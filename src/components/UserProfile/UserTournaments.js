@@ -25,6 +25,11 @@ class UserTournaments extends Component {
 
   create(id) {
     this.props.createMatchesActions(id);
+    this.props.history.push(`/tournament-id/${id}`);
+  }
+
+  goBack(){
+    this.props.history.push('/');
   }
 
   render() {
@@ -55,31 +60,40 @@ class UserTournaments extends Component {
           </div>
           <div className="tourny-actions">
             {item.teams.length === item.numberOfTeams
-              ? <button
-                  onClick={this.create.bind(this, item._id)}
-                >
-                  <img src={create} />
-                </button>
+              ? <div className="action-btn-holder">
+                  <button
+                    onClick={this.create.bind(this, item._id)}
+                  >
+                    <img src={create} />
+                  </button>
+                  <h6>CREATE</h6>
+                </div>
               : null}
             {item.teams.length !== item.numberOfTeams
               ? null//  <button>Update</button>
               : null}
-            <button
-              onClick={this.goToTournament.bind(
-                this,
-                item._id,
-              )}
-            >
-              <img src={stats} />
-            </button>
-            <button
-              onClick={this.deleteTourny.bind(
-                this,
-                item._id,
-              )}
-            >
-              <img src={deleteBtn} />
-            </button>
+            <div className="action-btn-holder">
+              <button
+                onClick={this.goToTournament.bind(
+                  this,
+                  item._id,
+                )}
+              >
+                <img src={stats} />
+              </button>
+              <h6>STATS</h6>
+            </div>
+            <div className="action-btn-holder">
+              <button
+                onClick={this.deleteTourny.bind(
+                  this,
+                  item._id,
+                )}
+              >
+                <img src={deleteBtn} />
+              </button>
+              <h6>DELETE</h6>
+            </div>
           </div>
         </div>,
     );
@@ -90,7 +104,15 @@ class UserTournaments extends Component {
     return (
       <div className="my-tournaments">
         <h1 className="Source-Sans">My Tournaments</h1>
-        <p>Here's a list of all of the tournaments you have created, once all of the teams you stipulated are registered hit the create button, this will start the league.</p>
+        <p>
+          Here's list of all of the tournaments you created so far, you can see the name of the tournament, the teams that are already registered, when do they start and an actions button panel. <br />
+
+        Look at the buttons carefuly the <b>CREATE</b> button, once all of the teams you estipulated are registered the <b>CREATE</b> button will appear, once you click on it this will trigger for the tournament to start, this means that the calendar will set up. <b>NOTE</b> that you only have to click this button once. <br />
+
+      The <b>STATS</b> button allows you to look and edit each tournament statistics, you can update results and take a look to the leaderboard. <br />
+
+    The <b>DELETE</b> button allows you to eliminate the tournament, try not to delete a tournament that is currently being played.
+        </p>
         <div className="tourny">
           <div className="tourny-number">
             <h4>No</h4>
@@ -105,6 +127,7 @@ class UserTournaments extends Component {
           </div>
         </div>
         {tournaments}
+        <button onClick={() => this.goBack()}>Back</button>
       </div>
     );
   }

@@ -59,3 +59,21 @@ article span{
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 736px) {
+  .register-team{
+    flex-direction: column;
+  }
+
+  .register-team article{
+    width: 100%;
+  }
+
+  .player-pic{
+    display: none;
+  }
+
+  .register-form{
+    width: 100%;
+  }
+}

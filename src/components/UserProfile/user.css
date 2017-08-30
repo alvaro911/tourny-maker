@@ -70,6 +70,15 @@
   justify-content: center;
 }
 
+.action-btn-holder{
+  width: 30%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .tourny-actions button{
   width: 50px;
   height: 50px;
@@ -127,4 +136,48 @@
 
 .my-team-info .team-btn{
   margin: 0 37.5% 41px;
+}
+
+.my-tournaments b{
+  text-transform: uppercase;
+  color: #D56327;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .tourny-actions{
+    justify-content: space-around;
+  }
+
+  .action-btn-holder{
+    width: 25%;
+    font-size: 12px;
+  }
+
+  .tourny-actions button{
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-tournaments{
+    padding-bottom: 8%;
+  }
+
+  .tourny-actions{
+    justify-content: space-around;
+  }
+
+  .action-btn-holder{
+    width: 25%;
+    font-size: 12px;
+  }
+
+  .tourny-actions button{
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+  }
 }

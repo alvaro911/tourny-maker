@@ -31,3 +31,23 @@ article .trophy{
   width: 20%;
   margin: 6em auto;
 }
+
+@media (max-width: 736px) {
+  .create-tournament{
+    flex-direction: column;
+  }
+
+  .create-tournament article{
+    width: 100%;
+    height: auto;
+  }
+
+  .trophy{
+    display: none;
+  }
+
+  .make-team{
+    width: 100%;
+    padding-bottom: 5%;
+  }
+}

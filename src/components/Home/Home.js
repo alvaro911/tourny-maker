@@ -10,11 +10,11 @@ function Home({ user }) {
       <div className="home">
         <div className="intro-paragraph">
           <h1>Welcome to <span className="Source-Sans">TOURNY MAKER</span></h1>
-          <h3>
-            The application to create/manage tournaments and
-            teams easily, so what are you waiting for? Sign up
-            or sign in and start making champions.
-          </h3>
+          <div className="home-highlights Source-Sans">
+            <div><h3>Create and manage tournaments</h3></div>
+            <div><h3>Create and manage teams</h3></div>
+            <div><h3>and more...</h3></div>
+          </div>
           <div className="user-btns">
             <Link to="/sign-up">
               <button>Sign Up</button>

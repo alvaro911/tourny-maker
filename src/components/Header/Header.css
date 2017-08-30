@@ -33,6 +33,10 @@ li{
   transition: all .25s ease;
 }
 
+li a{
+  color: #D56327;
+}
+
 li a:visited{
   color: #D56327;
 }
@@ -40,4 +44,14 @@ li a:visited{
 li:hover{
   color: #18B0B7;
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  nav h1{
+    font-size: 25px;
+  }
+
+  nav ul{
+    width: 45%;
+  }
 }

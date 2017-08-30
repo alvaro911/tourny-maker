@@ -99,3 +99,38 @@
   margin: 0;
   width: 20%;
 }
+
+@media (min-width: 768px) {
+  .tournament-nav{
+    width: 89%;
+  }
+
+  .match button{
+    width: 44%;
+  }
+
+  .banner{
+    font: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tournament-nav{
+    width: 95%;
+  }
+
+  .match button{
+    width: 50%;
+  }
+}
+
+@media (max-width: 736px) {
+  .tournament-stats main{
+    flex-direction: column;
+  }
+
+  .stats{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
