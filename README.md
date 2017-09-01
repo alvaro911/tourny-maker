@@ -2,7 +2,7 @@
 
 Tourny maker is an application that helps people to create and manage amateur soccer tournaments.
 
-[Live demo](https://tournmy-maker.herokuapp.com)
+[Live demo](https://tourny-maker.herokuapp.com)
 
 ## Installation
 
