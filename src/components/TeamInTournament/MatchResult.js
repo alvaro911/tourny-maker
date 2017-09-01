@@ -52,7 +52,7 @@ class MatchResult extends Component {
 
   goBack() {
     const path = this.props.m.tournamentId;
-    this.history.props.goBack(`/tournament/${path}`);
+    this.history.props.push(`/tournament/${path}`);
   }
 
   render() {
@@ -61,7 +61,6 @@ class MatchResult extends Component {
     }
     return (
       <div>
-        <button onClick={this.goBack}>Back</button>
         <form onSubmit={e => this.submitResult(e)}>
           <label htmlFor="goalsA">
             {this.props.m.teamA.teamName}

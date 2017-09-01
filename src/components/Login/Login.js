@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Spinner from 'react-spinkit';
 
 import * as actions from '../../actions';
 
@@ -10,6 +11,7 @@ class Login extends Component {
       password: '',
       email: '',
       formSubmitted: false,
+      loader: false
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.userInfo = this.userInfo.bind(this);
@@ -19,6 +21,7 @@ class Login extends Component {
     e.preventDefault();
     this.setState({
       formSubmitted: true,
+      loader: true,
     });
     try {
       await this.props.loginAction(this.state);
@@ -45,6 +48,13 @@ class Login extends Component {
   }
 
   render() {
+    if(this.state.loader){
+      return(
+        <div className="loader">
+          <Spinner name="ball-spin-fade-loader" color="coral" />
+        </div>
+      )
+    }
     return (
       <div className="login">
         <div>
