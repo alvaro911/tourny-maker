@@ -10,7 +10,6 @@ class Login extends Component {
     this.state = {
       password: '',
       email: '',
-      formSubmitted: false,
       loader: false
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -20,7 +19,6 @@ class Login extends Component {
   async onSubmit(e) {
     e.preventDefault();
     this.setState({
-      formSubmitted: true,
       loader: true,
     });
     try {
@@ -37,21 +35,12 @@ class Login extends Component {
     });
   }
 
-  get passwordValidation() {
-    if (
-      this.state.password.length < 6 &&
-      this.state.formSubmitted
-    ) {
-      return true;
-    }
-    return false;
-  }
-
   render() {
     if(this.state.loader){
       return(
         <div className="loader">
-          <Spinner name="ball-spin-fade-loader" color="coral" />
+          <Spinner name="ball-spin-fade-loader loader" color="coral" />
+          <h1>Loading...</h1>
         </div>
       )
     }
